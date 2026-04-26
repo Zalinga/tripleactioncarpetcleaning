@@ -929,13 +929,20 @@
           <!-- SUCCESS MESSAGE (hidden by default) -->
           <div id="formSuccess" style="display:none;background:linear-gradient(135deg,#3a7d44,#4caf50);border-radius:12px;padding:28px;text-align:center;color:white;">
             <div style="font-size:2.5rem;margin-bottom:12px;">✅</div>
-            <h4 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;margin-bottom:8px;">Request Received!</h4>
-            <p style="font-size:0.9rem;opacity:0.92;line-height:1.6;margin-bottom:20px;">We've sent your request to our team. Expect a call or email within 2 hours during business hours.</p>
-            <a href="https://wa.me/18258885388?text=Hi%20Triple%20Action%2C%20I%20just%20submitted%20a%20quote%20request%20online%20and%20wanted%20to%20follow%20up."
+            <h4 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;margin-bottom:8px;">Quote Request Sent!</h4>
+            <p style="font-size:0.9rem;opacity:0.92;line-height:1.6;margin-bottom:8px;">
+              ✉️ Your request has been emailed to our team. We'll reply within 2 hours during business hours.
+            </p>
+            <p style="font-size:0.82rem;opacity:0.75;margin-bottom:20px;">Want a faster reply? Tap the button below to also send us your details on WhatsApp.</p>
+            <!-- WhatsApp button — user clicks manually, fully separate from form email -->
+            <a id="waFollowUpBtn"
+               href="https://wa.me/18258885388"
                target="_blank"
-               style="display:inline-flex;align-items:center;gap:10px;background:white;color:#3a7d44;padding:12px 24px;border-radius:8px;font-weight:700;font-size:0.88rem;letter-spacing:1px;text-decoration:none;text-transform:uppercase;">
-              💬 Also Message Us on WhatsApp
+               rel="noopener"
+               style="display:inline-flex;align-items:center;gap:10px;background:white;color:#25a244;padding:14px 28px;border-radius:8px;font-weight:800;font-size:0.9rem;letter-spacing:1px;text-decoration:none;text-transform:uppercase;box-shadow:0 4px 16px rgba(0,0,0,0.15);">
+              💬 Send My Details on WhatsApp
             </a>
+            <p style="font-size:0.72rem;opacity:0.6;margin-top:14px;">This opens WhatsApp with your info pre-filled — just tap Send.</p>
           </div>
 
           <form id="quoteForm" class="contact-form"
@@ -1106,7 +1113,7 @@
   function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden'; }
   function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
 
-  // Form submit via Formspree AJAX
+  // Form submit — Email via Formspree & WhatsApp are FULLY SEPARATE
   const quoteForm = document.getElementById('quoteForm');
   if (quoteForm) {
     quoteForm.addEventListener('submit', async function(e) {
@@ -1117,39 +1124,46 @@
       btn.style.opacity = '0.7';
 
       const formData = new FormData(quoteForm);
+
+      // Build WhatsApp lead message BEFORE fetch (fields still available)
+      const firstName = (formData.get('first_name') || '').trim();
+      const lastName  = (formData.get('last_name')  || '').trim();
+      const phone     = (formData.get('phone')       || '').trim();
+      const email     = (formData.get('email')       || '').trim();
+      const service   = (formData.get('service')     || '').trim();
+      const homeSize  = (formData.get('home_size')   || '').trim();
+      const prefDate  = (formData.get('preferred_date') || '').trim();
+      const msgText   = (formData.get('message')     || '').trim();
+
+      const waMsg = encodeURIComponent(
+        '🔔 *NEW LEAD – Triple Action Carpet Cleaning*\n\n' +
+        '👤 *Name:* ' + firstName + ' ' + lastName + '\n' +
+        '📞 *Phone:* ' + phone + '\n' +
+        '✉️ *Email:* ' + email + '\n' +
+        '🧹 *Service:* ' + service + '\n' +
+        '🏠 *Home Size:* ' + (homeSize || 'Not specified') + '\n' +
+        '📅 *Preferred Date:* ' + (prefDate || 'Not specified') + '\n' +
+        '💬 *Details:* ' + (msgText || 'None') + '\n\n' +
+        '_Submitted via website contact form_'
+      );
+      const waLink = 'https://wa.me/18258885388?text=' + waMsg;
+
       try {
+        // 1️⃣ Send email lead via Formspree
         const res = await fetch('https://formspree.io/f/xnjlllko', {
           method: 'POST',
           body: formData,
           headers: { 'Accept': 'application/json' }
         });
+
         if (res.ok) {
-          // Collect lead details for WhatsApp notification
-          const firstName = (formData.get('first_name') || '').trim();
-          const lastName = (formData.get('last_name') || '').trim();
-          const phone = (formData.get('phone') || '').trim();
-          const email = (formData.get('email') || '').trim();
-          const service = (formData.get('service') || '').trim();
-          const homeSize = (formData.get('home_size') || '').trim();
-          const preferredDate = (formData.get('preferred_date') || '').trim();
-          const message = (formData.get('message') || '').trim();
-
-          const waMsg = encodeURIComponent(
-            `🔔 *NEW LEAD – Triple Action Carpet Cleaning*\n\n` +
-            `👤 *Name:* ${firstName} ${lastName}\n` +
-            `📞 *Phone:* ${phone}\n` +
-            `✉️ *Email:* ${email}\n` +
-            `🧹 *Service:* ${service}\n` +
-            `🏠 *Home Size:* ${homeSize || 'Not specified'}\n` +
-            `📅 *Preferred Date:* ${preferredDate || 'Not specified'}\n` +
-            `💬 *Details:* ${message || 'None'}\n\n` +
-            `_Submitted via website form_`
-          );
-          // Send lead notification to company WhatsApp
-          window.open(`https://wa.me/18258885388?text=${waMsg}`, '_blank');
-
+          // 2️⃣ Show success screen — WhatsApp button is separate, user clicks it manually
           quoteForm.style.display = 'none';
-          document.getElementById('formSuccess').style.display = 'block';
+          const successBox = document.getElementById('formSuccess');
+          successBox.style.display = 'block';
+          // Update the WhatsApp follow-up button with the pre-filled lead message
+          const waBtn = document.getElementById('waFollowUpBtn');
+          if (waBtn) { waBtn.href = waLink; }
         } else {
           btn.textContent = '⚠ Error – Please try again';
           btn.style.background = '#c0392b';
