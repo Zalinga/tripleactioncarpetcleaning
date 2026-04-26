@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triple Action Carpet Cleaning | Edmonton, Alberta</title>
+<meta name="description" content="Professional carpet cleaning in Edmonton, Alberta. Serving residential and commercial clients across the Edmonton area with triple-action deep clean technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Exo+2:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2b6e;
+    --blue: #1a52c4;
+    --blue-mid: #2563eb;
+    --green: #3a7d44;
+    --green-bright: #4caf50;
+    --white: #ffffff;
+    --off-white: #f0f4ff;
+    --light-grey: #e8edf8;
+    --dark: #071530;
+    --text: #1a2a4a;
+    --text-light: #5a6a8a;
+    --accent: #00d4ff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Exo 2', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 72px;
+    background: rgba(7, 21, 48, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    height: 48px; width: 48px; object-fit: contain; border-radius: 50%;
+  }
+  .nav-logo-text { display: flex; flex-direction: column; }
+  .nav-logo-text .brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.35rem; color: var(--white); letter-spacing: 2px; line-height: 1; }
+  .nav-logo-text .sub { font-size: 0.62rem; color: var(--green-bright); letter-spacing: 3px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.82rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: linear-gradient(135deg, var(--green), var(--green-bright));
+    color: var(--white); border: none; cursor: pointer;
+    padding: 10px 22px; border-radius: 6px;
+    font-family: 'Exo 2', sans-serif; font-weight: 700; font-size: 0.8rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(76,175,80,0.4); }
+
+  /* hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 26px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding-top: 72px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(26,82,196,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(58,125,68,0.25) 0%, transparent 60%),
+      linear-gradient(160deg, #071530 0%, #0d1f45 50%, #071530 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  /* animated water spray dots */
+  .hero-particles { position: absolute; inset: 0; pointer-events: none; }
+  .particle {
+    position: absolute; border-radius: 50%;
+    background: rgba(0,212,255,0.15);
+    animation: float-up linear infinite;
+  }
+  @keyframes float-up {
+    0% { transform: translateY(0) scale(1); opacity: 0.6; }
+    100% { transform: translateY(-100vh) scale(0.2); opacity: 0; }
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 1300px; margin: 0 auto;
+    padding: 0 5vw;
+    display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center;
+  }
+  .hero-left {}
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(76,175,80,0.15); border: 1px solid rgba(76,175,80,0.4);
+    color: var(--green-bright); padding: 6px 16px; border-radius: 100px;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fade-up 0.6s ease both;
+  }
+  .hero-badge::before { content: '●'; font-size: 0.6rem; animation: pulse 1.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: 3px;
+    animation: fade-up 0.6s 0.1s ease both;
+  }
+  .hero-title .highlight {
+    background: linear-gradient(90deg, var(--blue-mid), var(--accent));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-title .green-text { color: var(--green-bright); -webkit-text-fill-color: var(--green-bright); }
+
+  .hero-sub {
+    margin-top: 20px; font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.7;
+    max-width: 540px;
+    animation: fade-up 0.6s 0.2s ease both;
+  }
+  .hero-actions {
+    margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fade-up 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+    color: white; padding: 16px 32px; border-radius: 8px; font-weight: 700;
+    font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+    box-shadow: 0 8px 30px rgba(26,82,196,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 35px rgba(26,82,196,0.55); }
+  .btn-secondary {
+    background: transparent; border: 2px solid rgba(255,255,255,0.25);
+    color: white; padding: 14px 28px; border-radius: 8px; font-weight: 600;
+    font-size: 0.9rem; letter-spacing: 1.5px; text-transform: uppercase;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); background: rgba(0,212,255,0.07); }
+
+  .hero-stats {
+    margin-top: 48px; display: flex; gap: 40px;
+    animation: fade-up 0.6s 0.4s ease both;
+  }
+  .stat { }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: var(--white); letter-spacing: 2px; line-height: 1; }
+  .stat-num span { color: var(--green-bright); }
+  .stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+
+  /* hero logo card */
+  .hero-right {
+    display: flex; justify-content: center; align-items: center;
+    animation: fade-up 0.6s 0.2s ease both;
+  }
+  .logo-showcase {
+    position: relative;
+    width: 340px; height: 340px;
+  }
+  .logo-glow {
+    position: absolute; inset: -30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,82,196,0.4) 0%, rgba(58,125,68,0.2) 50%, transparent 70%);
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+  @keyframes glow-pulse { 0%,100% { opacity:0.6; transform:scale(1); } 50% { opacity:1; transform:scale(1.08); } }
+  .logo-ring {
+    position: absolute; inset: -8px; border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.1);
+    animation: spin-slow 20s linear infinite;
+  }
+  .logo-ring-2 {
+    position: absolute; inset: -20px; border-radius: 50%;
+    border: 1px dashed rgba(76,175,80,0.3);
+    animation: spin-slow 35s linear infinite reverse;
+  }
+  @keyframes spin-slow { to { transform: rotate(360deg); } }
+  .logo-img {
+    width: 100%; height: 100%; object-fit: contain;
+    border-radius: 50%;
+    position: relative; z-index: 1;
+    filter: drop-shadow(0 20px 60px rgba(26,82,196,0.5));
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* scroll hint */
+  .scroll-hint {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+    animation: fade-up 1s 1s ease both;
+  }
+  .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent); animation: scroll-pulse 2s ease-in-out infinite; }
+  @keyframes scroll-pulse { 0%,100% { transform: scaleY(1); opacity:1; } 50% { transform: scaleY(0.6); opacity:0.4; } }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    background: linear-gradient(135deg, var(--navy), #0f3380);
+    padding: 28px 5vw;
+    border-bottom: 3px solid var(--green);
+  }
+  .trust-inner {
+    max-width: 1300px; margin: 0 auto;
+    display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px;
+  }
+  .trust-item { display: flex; align-items: center; gap: 12px; color: white; }
+  .trust-icon { font-size: 1.6rem; }
+  .trust-text strong { display: block; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.5px; }
+  .trust-text span { font-size: 0.72rem; color: rgba(255,255,255,0.6); letter-spacing: 1px; }
+  .trust-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.15); }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 5vw; }
+  .section-inner { max-width: 1300px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--green); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: 2px;
+    color: var(--navy); line-height: 1.05;
+  }
+  .section-title .accent { color: var(--blue-mid); }
+  .section-sub { font-size: 1rem; color: var(--text-light); line-height: 1.7; max-width: 560px; margin-top: 12px; }
+
+  /* ── SERVICES ── */
+  .services { background: var(--off-white); }
+  .services-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 60px; flex-wrap: wrap; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;
+  }
+  .service-card {
+    background: white; border-radius: 16px;
+    padding: 36px 30px;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative; overflow: hidden;
+    cursor: default;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--green-bright));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(13,43,110,0.12); }
+  .service-icon { font-size: 2.6rem; margin-bottom: 18px; }
+  .service-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 1.5px; color: var(--navy); margin-bottom: 10px; }
+  .service-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.65; }
+  .service-tag {
+    display: inline-block; margin-top: 16px;
+    background: var(--off-white); color: var(--blue);
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 100px;
+  }
+
+  /* ── PROCESS ── */
+  .process { background: var(--dark); }
+  .process .section-title { color: var(--white); }
+  .process .section-sub { color: rgba(255,255,255,0.55); }
+  .process .section-label { color: var(--accent); }
+  .process-steps {
+    margin-top: 64px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute;
+    top: 52px; left: calc(12.5% + 28px); right: calc(12.5% + 28px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--green-bright));
+  }
+  .process-step { text-align: center; padding: 0 20px; }
+  .step-circle {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: white; letter-spacing: 1px;
+    margin: 0 auto 24px;
+    position: relative; z-index: 1;
+    box-shadow: 0 0 0 6px rgba(26,82,196,0.2), 0 0 30px rgba(26,82,196,0.4);
+  }
+  .process-step h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 1.5px; color: white; margin-bottom: 10px; }
+  .process-step p { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.65; }
+
+  /* ── WHY US ── */
+  .why { background: white; }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 64px; }
+  .why-visual {
+    position: relative; border-radius: 20px; overflow: hidden;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--navy), var(--blue-mid));
+    display: flex; align-items: center; justify-content: center;
+  }
+  .why-visual-inner {
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    color: white; text-align: center; padding: 40px;
+  }
+  .why-big-num {
+    font-family: 'Bebas Neue', sans-serif; font-size: 7rem; letter-spacing: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--green-bright));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+  .why-visual p { font-size: 0.85rem; color: rgba(255,255,255,0.7); letter-spacing: 2px; text-transform: uppercase; }
+  .why-features { display: flex; flex-direction: column; gap: 28px; }
+  .why-feature { display: flex; gap: 20px; align-items: flex-start; }
+  .why-feature-icon {
+    width: 48px; height: 48px; min-width: 48px; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(26,82,196,0.1), rgba(76,175,80,0.1));
+    border: 1px solid rgba(26,82,196,0.15);
+    display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  }
+  .why-feature h4 { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 6px; }
+  .why-feature p { font-size: 0.83rem; color: var(--text-light); line-height: 1.65; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--off-white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 56px; }
+  .testimonial-card {
+    background: white; border-radius: 16px; padding: 32px;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: box-shadow 0.3s;
+  }
+  .testimonial-card:hover { box-shadow: 0 12px 40px rgba(13,43,110,0.1); }
+  .stars { color: #f59e0b; font-size: 1rem; letter-spacing: 2px; margin-bottom: 16px; }
+  .testimonial-text { font-size: 0.9rem; color: var(--text); line-height: 1.7; font-style: italic; margin-bottom: 20px; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--green-bright));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 1rem; color: white;
+  }
+  .author-name { font-weight: 700; font-size: 0.85rem; color: var(--navy); }
+  .author-loc { font-size: 0.72rem; color: var(--text-light); }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue-mid) 50%, var(--green) 100%);
+    padding: 80px 5vw; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-band::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .cta-band-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .cta-band h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: 3px; color: white; line-height: 1.1; margin-bottom: 16px; }
+  .cta-band p { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.65; margin-bottom: 32px; }
+  .cta-band-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-white {
+    background: white; color: var(--navy);
+    padding: 16px 34px; border-radius: 8px; font-weight: 800;
+    font-size: 0.88rem; letter-spacing: 1.5px; text-transform: uppercase;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-white:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.4); }
+  .btn-outline-white {
+    border: 2px solid rgba(255,255,255,0.5); color: white;
+    padding: 14px 28px; border-radius: 8px; font-weight: 700;
+    font-size: 0.88rem; letter-spacing: 1.5px; text-transform: uppercase;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 10px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+  /* ── CONTACT ── */
+  .contact { background: white; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 64px; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 28px; }
+  .contact-item { display: flex; gap: 16px; align-items: flex-start; }
+  .contact-item-icon {
+    width: 48px; height: 48px; min-width: 48px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--blue), var(--green-bright));
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+  }
+  .contact-item h4 { font-weight: 700; font-size: 0.82rem; color: var(--text-light); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .contact-item a, .contact-item p { font-size: 0.95rem; color: var(--navy); font-weight: 600; text-decoration: none; }
+  .contact-item a:hover { color: var(--blue-mid); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 18px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    border: 2px solid var(--light-grey); border-radius: 8px;
+    padding: 12px 16px; font-family: 'Exo 2', sans-serif; font-size: 0.9rem;
+    color: var(--text); background: white;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--blue-mid); box-shadow: 0 0 0 4px rgba(37,99,235,0.1);
+  }
+  .form-group textarea { min-height: 110px; resize: vertical; }
+  .form-submit {
+    background: linear-gradient(135deg, var(--blue), var(--green));
+    color: white; border: none; cursor: pointer;
+    padding: 16px 32px; border-radius: 8px;
+    font-family: 'Exo 2', sans-serif; font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(13,43,110,0.3); }
+
+  /* map placeholder */
+  .map-box {
+    margin-top: 56px; border-radius: 16px; overflow: hidden;
+    border: 2px solid var(--light-grey);
+  }
+  .map-box iframe { width: 100%; height: 320px; border: none; display: block; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.6);
+    padding: 60px 5vw 30px;
+  }
+  .footer-grid {
+    max-width: 1300px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px;
+    padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 32px;
+  }
+  .footer-brand {}
+  .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .footer-logo img { height: 50px; border-radius: 50%; }
+  .footer-logo-text .brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: white; letter-spacing: 2px; }
+  .footer-logo-text .sub { font-size: 0.6rem; color: var(--green-bright); letter-spacing: 3px; text-transform: uppercase; }
+  footer p { font-size: 0.83rem; line-height: 1.7; }
+  .footer-col h4 { color: white; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 18px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col li a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.83rem; transition: color 0.2s; }
+  .footer-col li a:hover { color: var(--accent); }
+  .footer-bottom {
+    max-width: 1300px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { font-size: 0.75rem; }
+  .footer-bottom a { color: var(--green-bright); text-decoration: none; }
+  .social-links { display: flex; gap: 12px; }
+  .social-link {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: white; text-decoration: none; font-size: 0.85rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .social-link:hover { background: var(--blue-mid); transform: translateY(-2px); }
+
+  /* floating call btn */
+  .float-call {
+    position: fixed; bottom: 28px; right: 28px; z-index: 999;
+    background: linear-gradient(135deg, var(--green), var(--green-bright));
+    color: white; width: 60px; height: 60px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    text-decoration: none; box-shadow: 0 8px 30px rgba(58,125,68,0.5);
+    animation: ring 3s ease-in-out infinite;
+  }
+  @keyframes ring {
+    0%,80%,100% { transform: scale(1); }
+    10%,30% { transform: scale(1.1) rotate(-10deg); }
+    20% { transform: scale(1.1) rotate(10deg); }
+  }
+
+  /* mobile menu */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 999;
+    background: rgba(7,21,48,0.98);
+    flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: white; text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 3px; transition: color 0.2s; }
+  .mobile-menu a:hover { color: var(--accent); }
+  .mobile-close { position: absolute; top: 24px; right: 28px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero-content { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-visual { display: none; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+  }
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero-stats { gap: 24px; flex-wrap: wrap; }
+    .form-row { grid-template-columns: 1fr; }
+    .trust-divider { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+    section { padding: 72px 5vw; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#process" onclick="closeMobileMenu()">How It Works</a>
+  <a href="#why" onclick="closeMobileMenu()">About Us</a>
+  <a href="#testimonials" onclick="closeMobileMenu()">Reviews</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+  <a href="tel:+18258885388" style="color:#4caf50">📞 Call Now</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/Zalinga/tripleactioncarpetcleaning/main/tacc%20logo.jpeg" id="navLogoImg" alt="Triple Action Carpet Cleaning Logo" onerror="this.style.display='none';document.getElementById('navLogoFallback').style.display='flex'">
+    <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#0d2b6e,#3a7d44);display:none;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:white;letter-spacing:1px;" id="navLogoFallback">TA</div>
+    <div class="nav-logo-text">
+      <span class="brand">Triple Action</span>
+      <span class="sub">Carpet Cleaning</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">How It Works</a></li>
+    <li><a href="#why">About Us</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+18258885388" class="nav-cta">📞 Free Quote</a>
+  <div class="hamburger" onclick="openMobileMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-particles" id="particles"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">🍁 Proudly Serving Edmonton, Alberta</div>
+      <h1 class="hero-title">
+        Deep Clean.<br>
+        <span class="highlight">Triple Action.</span><br>
+        <span class="green-text">Guaranteed.</span>
+      </h1>
+      <p class="hero-sub">Edmonton's most trusted carpet cleaning company. We use a proven three-step process — pre-treatment, deep extraction, and protective finish — to restore your carpets to like-new condition.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">📋 Get Free Quote</a>
+        <a href="tel:+18258885388" class="btn-secondary">📞 +1-825-888-5388</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">500<span>+</span></div>
+          <div class="stat-label">Homes Cleaned</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100<span>%</span></div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5<span>★</span></div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="logo-showcase">
+        <div class="logo-glow"></div>
+        <div class="logo-ring"></div>
+        <div class="logo-ring-2"></div>
+        <!-- Actual company logo -->
+        <img src="https://raw.githubusercontent.com/Zalinga/tripleactioncarpetcleaning/main/tacc%20logo.jpeg"
+             alt="Triple Action Carpet Cleaning Logo"
+             class="logo-img"
+             onerror="this.style.display='none';document.getElementById('heroLogoFallback').style.display='flex'">
+        <div id="heroLogoFallback" style="display:none;width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#0d2b6e,#1a52c4,#3a7d44);align-items:center;justify-content:center;position:absolute;inset:0;z-index:1;box-shadow:0 20px 60px rgba(26,82,196,0.5);">
+          <div style="text-align:center;color:white;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:5rem;letter-spacing:4px;line-height:1;background:linear-gradient(90deg,#fff,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">TA</div>
+            <div style="font-size:0.65rem;letter-spacing:4px;color:rgba(255,255,255,0.7);text-transform:uppercase;">Triple Action</div>
+            <div style="font-size:0.6rem;letter-spacing:3px;color:#4caf50;text-transform:uppercase;margin-top:4px;">Carpet Cleaning</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">✅</div>
+      <div class="trust-text">
+        <strong>Licensed & Insured</strong>
+        <span>Fully certified professionals</span>
+      </div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-icon">🍁</div>
+      <div class="trust-text">
+        <strong>Alberta-Based</strong>
+        <span>Local Edmonton company</span>
+      </div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-icon">⚡</div>
+      <div class="trust-text">
+        <strong>Same-Day Service</strong>
+        <span>Available for urgent bookings</span>
+      </div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-icon">💧</div>
+      <div class="trust-text">
+        <strong>Eco-Friendly Products</strong>
+        <span>Safe for kids & pets</span>
+      </div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-icon">🏆</div>
+      <div class="trust-text">
+        <strong>Satisfaction Guarantee</strong>
+        <span>100% money-back promise</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Our Cleaning <span class="accent">Services</span></h2>
+        <p class="section-sub">Professional-grade cleaning solutions for every surface in your Edmonton home or business.</p>
+      </div>
+      <a href="#contact" class="btn-primary" style="white-space:nowrap">Book a Service →</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>Residential Carpet Cleaning</h3>
+        <p>Deep steam extraction removes embedded dirt, allergens, and stains from all carpet types. We restore freshness and extend carpet life.</p>
+        <span class="service-tag">Most Popular</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Commercial Carpet Cleaning</h3>
+        <p>Minimal disruption, maximum results. We work around your schedule to keep your office or commercial space spotless and professional.</p>
+        <span class="service-tag">Available 24/7</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛋️</div>
+        <h3>Upholstery & Sofa Cleaning</h3>
+        <p>Revive your sofas, chairs, and furniture. Our upholstery experts safely deep-clean fabric and remove stains without damage.</p>
+        <span class="service-tag">Gentle Process</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🐾</div>
+        <h3>Pet Stain & Odour Removal</h3>
+        <p>Specialized enzyme-based treatments that neutralize pet odours at the source — not just masking them — and permanently lift stains.</p>
+        <span class="service-tag">Enzyme-Based</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛡️</div>
+        <h3>Carpet Protection & Scotchgard</h3>
+        <p>Post-clean protective coating that repels spills and reduces soiling, keeping your carpets cleaner for longer between services.</p>
+        <span class="service-tag">Add-On Service</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🪟</div>
+        <h3>Area Rug & Tile Cleaning</h3>
+        <p>Safe, effective cleaning for all area rug types including Persian, wool, and synthetic. Also includes tile and grout deep cleaning.</p>
+        <span class="service-tag">All Rug Types</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="section-inner">
+    <div class="section-label">Our Method</div>
+    <h2 class="section-title">The Triple Action <span style="color:var(--accent)">Process</span></h2>
+    <p class="section-sub">Three precision steps. One exceptional result. This is why our name says it all.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-circle">1</div>
+        <h4>Pre-Inspection & Pre-Treatment</h4>
+        <p>We assess your carpets, identify stain types, and apply targeted pre-treatment solutions to loosen embedded soils before cleaning begins.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">2</div>
+        <h4>Deep Hot Water Extraction</h4>
+        <p>High-powered truck-mount steam cleaning penetrates deep into carpet fibres, flushing out dirt, bacteria, and allergens completely.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">3</div>
+        <h4>Finish & Protective Coating</h4>
+        <p>pH-balanced rinse restores fibre integrity. Optional Scotchgard protective layer is applied, leaving carpets fresh, bright, and protected.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle" style="background:linear-gradient(135deg,var(--green),var(--green-bright));">✓</div>
+        <h4>Post-Inspection & Your Guarantee</h4>
+        <p>We walk through results with you before we leave. Not satisfied? We come back — at no extra charge. That's our Edmonton promise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div>
+        <div class="section-label">Why Triple Action</div>
+        <h2 class="section-title">Edmonton Chooses <span class="accent">Us</span></h2>
+        <p class="section-sub">We're not a franchise. We're your neighbours — a local Edmonton team that takes pride in every job.</p>
+        <div class="why-features" style="margin-top:40px;">
+          <div class="why-feature">
+            <div class="why-feature-icon">🌡️</div>
+            <div>
+              <h4>Truck-Mount Steam Technology</h4>
+              <p>Our professional-grade truck-mounted units generate higher heat and suction than portable machines — delivering a deeper, faster-drying clean.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">🧪</div>
+            <div>
+              <h4>Non-Toxic, Safe Chemicals</h4>
+              <p>All cleaning agents are Health Canada approved, biodegradable, and completely safe for children, pets, and allergy sufferers.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">📅</div>
+            <div>
+              <h4>Flexible Scheduling</h4>
+              <p>Evenings, weekends, same-day — we work around your life, not the other way around. Serving all of Edmonton and surrounding areas.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">💰</div>
+            <div>
+              <h4>Upfront, Honest Pricing</h4>
+              <p>Free in-home estimates. No hidden fees. No surprise charges. You know the exact price before we start — always.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <div class="why-visual-inner">
+          <div class="why-big-num">500+</div>
+          <p>Happy Edmonton Families</p>
+          <div style="display:flex;gap:8px;margin-top:16px;">
+            <span style="background:rgba(255,255,255,0.1);padding:6px 16px;border-radius:100px;font-size:0.75rem;letter-spacing:1px;">5★ Rated</span>
+            <span style="background:rgba(76,175,80,0.2);padding:6px 16px;border-radius:100px;font-size:0.75rem;letter-spacing:1px;color:#4caf50;">Insured</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <div class="section-label">What Clients Say</div>
+    <h2 class="section-title">Real Edmonton <span class="accent">Reviews</span></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I've tried three other carpet cleaners in Edmonton and Triple Action is in a completely different league. My 10-year-old carpets look brand new. The pet stain treatment actually worked — I couldn't believe it."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SR</div>
+          <div><div class="author-name">Sandra R.</div><div class="author-loc">South Edmonton</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Called them on a Friday for a weekend booking. They showed up Saturday morning, on time, professional, and efficient. The carpet in our basement suite looks incredible. Highly recommend to anyone in Edmonton."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MK</div>
+          <div><div class="author-name">Mike K.</div><div class="author-loc">West Edmonton</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Used Triple Action for our office after a renovation. They handled over 2,000 sq ft of carpet in under 3 hours with zero disruption to our team. Pricing was fair and transparent. Already booked them again."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DP</div>
+          <div><div class="author-name">David P.</div><div class="author-loc">Downtown Edmonton</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <h2>Ready for Spotless Carpets?</h2>
+    <p>Get your free, no-obligation quote today. We serve Edmonton and all surrounding communities in Alberta — same-day service available.</p>
+    <div class="cta-band-actions">
+      <a href="#contact" class="btn-white">📋 Get Free Quote</a>
+      <a href="tel:+18258885388" class="btn-outline-white">📞 +1-825-888-5388</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Book Your <span class="accent">Clean</span></h2>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div>
+              <h4>Address</h4>
+              <p>124 29 Street SW<br>Edmonton, Alberta, Canada<br>T6X 3E2</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+18258885388">+1-825-888-5388</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:tripleactioncarpetcleaning6@gmail.com">tripleactioncarpetcleaning6@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div>
+              <h4>WhatsApp</h4>
+              <a href="https://wa.me/18258885388?text=Hi%20Triple%20Action%2C%20I'd%20like%20a%20free%20carpet%20cleaning%20quote!" target="_blank" style="color:#25d366;">+1-825-888-5388 (Chat Now)</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🕐</div>
+            <div>
+              <h4>Hours</h4>
+              <p>Monday – Saturday: 8:00 AM – 7:00 PM<br>Sunday: 9:00 AM – 5:00 PM<br><span style="color:var(--green);font-weight:700;">Same-day service available!</span></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🍁</div>
+            <div>
+              <h4>Service Area</h4>
+              <p>Edmonton, Sherwood Park, St. Albert, Spruce Grove, Leduc & surrounding Alberta communities.</p>
+            </div>
+          </div>
+        </div>
+        <div class="map-box" style="margin-top:36px;">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2374.0!2d-113.5!3d53.48!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTMuNDgwMCwtMTEzLjUwMDA!5e0!3m2!1sen!2sca!4v1234567890" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Triple Action Carpet Cleaning Location - Edmonton Alberta">
+          </iframe>
+        </div>
+      </div>
+      <div>
+        <div style="background:var(--off-white);border-radius:20px;padding:40px;">
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--navy);margin-bottom:8px;">Free Quote Request</h3>
+          <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:28px;">Fill out the form and we'll get back to you within 2 hours during business hours.</p>
+
+          <!-- SUCCESS MESSAGE (hidden by default) -->
+          <div id="formSuccess" style="display:none;background:linear-gradient(135deg,#3a7d44,#4caf50);border-radius:12px;padding:28px;text-align:center;color:white;">
+            <div style="font-size:2.5rem;margin-bottom:12px;">✅</div>
+            <h4 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;margin-bottom:8px;">Request Received!</h4>
+            <p style="font-size:0.9rem;opacity:0.92;line-height:1.6;margin-bottom:20px;">We've sent your request to our team. Expect a call or email within 2 hours during business hours.</p>
+            <a href="https://wa.me/18258885388?text=Hi%20Triple%20Action%2C%20I%20just%20submitted%20a%20quote%20request%20online%20and%20wanted%20to%20follow%20up."
+               target="_blank"
+               style="display:inline-flex;align-items:center;gap:10px;background:white;color:#3a7d44;padding:12px 24px;border-radius:8px;font-weight:700;font-size:0.88rem;letter-spacing:1px;text-decoration:none;text-transform:uppercase;">
+              💬 Also Message Us on WhatsApp
+            </a>
+          </div>
+
+          <form id="quoteForm" class="contact-form"
+                action="https://formspree.io/f/xnjlllko"
+                method="POST">
+            <!-- Hidden fields for routing -->
+            <input type="hidden" name="_subject" value="🧹 New Quote Request – Triple Action Carpet Cleaning">
+            <input type="hidden" name="company_whatsapp" value="+1-825-888-5388">
+            <input type="hidden" name="company_address" value="124 29 Street SW, Edmonton, Alberta, Canada T6X 3E2">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" name="first_name" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" name="last_name" placeholder="Smith" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" name="phone" placeholder="+1 (780) 000-0000" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label>Service Required</label>
+              <select name="service" required>
+                <option value="">Select a service...</option>
+                <option>Residential Carpet Cleaning</option>
+                <option>Commercial Carpet Cleaning</option>
+                <option>Upholstery &amp; Sofa Cleaning</option>
+                <option>Pet Stain &amp; Odour Removal</option>
+                <option>Carpet Protection (Scotchgard)</option>
+                <option>Area Rug Cleaning</option>
+                <option>Tile &amp; Grout Cleaning</option>
+                <option>Multiple Services</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Home Size</label>
+                <select name="home_size">
+                  <option value="">Select...</option>
+                  <option>Under 1,000 sq ft</option>
+                  <option>1,000 – 1,500 sq ft</option>
+                  <option>1,500 – 2,500 sq ft</option>
+                  <option>2,500+ sq ft</option>
+                  <option>Commercial Space</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Preferred Date</label>
+                <input type="date" name="preferred_date">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Additional Details</label>
+              <textarea name="message" placeholder="Describe your carpet situation, any specific stains, number of rooms, etc."></textarea>
+            </div>
+            <button type="submit" class="form-submit" id="submitBtn">Send My Free Quote Request 🧹</button>
+          </form>
+
+          <!-- WhatsApp quick contact below form -->
+          <div style="margin-top:20px;padding:16px;background:white;border-radius:10px;border:1px solid #e8edf8;display:flex;align-items:center;gap:14px;">
+            <span style="font-size:1.6rem;">💬</span>
+            <div>
+              <div style="font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:2px;">Prefer WhatsApp?</div>
+              <a href="https://wa.me/18258885388?text=Hi%20Triple%20Action%2C%20I'd%20like%20to%20get%20a%20free%20carpet%20cleaning%20quote."
+                 target="_blank"
+                 style="color:#25d366;font-weight:700;font-size:0.92rem;text-decoration:none;">
+                Message us directly → +1-825-888-5388
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="https://raw.githubusercontent.com/Zalinga/tripleactioncarpetcleaning/main/tacc%20logo.jpeg" alt="Triple Action Carpet Cleaning Logo" style="height:50px;width:50px;border-radius:50%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="display:none;width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0d2b6e,#3a7d44);align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:white;">TA</div>
+        <div class="footer-logo-text">
+          <div class="brand">Triple Action</div>
+          <div class="sub">Carpet Cleaning</div>
+        </div>
+      </div>
+      <p>Edmonton's trusted carpet cleaning specialists. Residential and commercial cleaning with a 100% satisfaction guarantee — because your home deserves the best.</p>
+      <div class="social-links" style="margin-top:20px;">
+        <a href="#" class="social-link">f</a>
+        <a href="#" class="social-link">in</a>
+        <a href="#" class="social-link">G</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#services">Residential Cleaning</a></li>
+        <li><a href="#services">Commercial Cleaning</a></li>
+        <li><a href="#services">Upholstery Cleaning</a></li>
+        <li><a href="#services">Pet Stain Removal</a></li>
+        <li><a href="#services">Carpet Protection</a></li>
+        <li><a href="#services">Area Rug Cleaning</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#why">About Us</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+18258885388">+1-825-888-5388</a></li>
+        <li><a href="mailto:tripleactioncarpetcleaning6@gmail.com" style="word-break:break-all;">tripleactioncarpetcleaning6@gmail.com</a></li>
+        <li><a href="#">124 29 St SW, Edmonton AB T6X 3E2</a></li>
+        <li><a href="#contact">Book Online</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Triple Action Carpet Cleaning. All rights reserved. | Edmonton, Alberta, Canada 🍁</p>
+    <p><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></p>
+  </div>
+</footer>
+
+<!-- FLOATING CALL BUTTON -->
+<a href="tel:+18258885388" class="float-call" title="Call Triple Action Now" style="bottom:100px;">📞</a>
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/18258885388?text=Hi%20Triple%20Action%2C%20I'd%20like%20a%20free%20carpet%20cleaning%20quote!" 
+   target="_blank"
+   class="float-call" 
+   title="WhatsApp Triple Action"
+   style="background:linear-gradient(135deg,#128c7e,#25d366);box-shadow:0 8px 30px rgba(37,211,102,0.5);">💬</a>
+
+<script>
+  // Floating particles
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 8 + 4;
+    p.style.cssText = `
+      left: ${Math.random() * 100}%;
+      bottom: ${Math.random() * 20}%;
+      width: ${size}px; height: ${size}px;
+      animation-duration: ${Math.random() * 8 + 6}s;
+      animation-delay: ${Math.random() * 8}s;
+    `;
+    container.appendChild(p);
+  }
+
+  // Mobile menu
+  function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
+
+  // Form submit via Formspree AJAX
+  const quoteForm = document.getElementById('quoteForm');
+  if (quoteForm) {
+    quoteForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+
+      const formData = new FormData(quoteForm);
+      try {
+        const res = await fetch('https://formspree.io/f/xnjlllko', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          // Collect lead details for WhatsApp notification
+          const firstName = (formData.get('first_name') || '').trim();
+          const lastName = (formData.get('last_name') || '').trim();
+          const phone = (formData.get('phone') || '').trim();
+          const email = (formData.get('email') || '').trim();
+          const service = (formData.get('service') || '').trim();
+          const homeSize = (formData.get('home_size') || '').trim();
+          const preferredDate = (formData.get('preferred_date') || '').trim();
+          const message = (formData.get('message') || '').trim();
+
+          const waMsg = encodeURIComponent(
+            `🔔 *NEW LEAD – Triple Action Carpet Cleaning*\n\n` +
+            `👤 *Name:* ${firstName} ${lastName}\n` +
+            `📞 *Phone:* ${phone}\n` +
+            `✉️ *Email:* ${email}\n` +
+            `🧹 *Service:* ${service}\n` +
+            `🏠 *Home Size:* ${homeSize || 'Not specified'}\n` +
+            `📅 *Preferred Date:* ${preferredDate || 'Not specified'}\n` +
+            `💬 *Details:* ${message || 'None'}\n\n` +
+            `_Submitted via website form_`
+          );
+          // Send lead notification to company WhatsApp
+          window.open(`https://wa.me/18258885388?text=${waMsg}`, '_blank');
+
+          quoteForm.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          btn.textContent = '⚠ Error – Please try again';
+          btn.style.background = '#c0392b';
+          btn.disabled = false;
+          btn.style.opacity = '1';
+        }
+      } catch (err) {
+        btn.textContent = '⚠ Network Error – Please try again';
+        btn.style.background = '#c0392b';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+      }
+    });
+  }
+
+  // Smooth nav scroll highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .process-step, .why-feature, .testimonial-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
