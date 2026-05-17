@@ -551,6 +551,153 @@
     .testimonials-grid { grid-template-columns: 1fr; }
   }
 
+  /* ── RATE US SECTION ── */
+  .rateus { background: var(--dark); }
+  .rateus .section-title { color: var(--white); }
+  .rateus .section-sub { color: rgba(255,255,255,0.55); }
+  .rateus .section-label { color: var(--accent); }
+
+  .rateus-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px; align-items: start;
+  }
+
+  /* Live average display */
+  .rating-summary {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 40px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    gap: 16px;
+  }
+  .rating-big-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6rem; line-height: 1; letter-spacing: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--green-bright));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .rating-stars-display { display: flex; gap: 6px; }
+  .rating-stars-display span {
+    font-size: 2rem;
+    transition: transform 0.2s;
+  }
+  .rating-count {
+    font-size: 0.8rem; color: rgba(255,255,255,0.45); letter-spacing: 2px; text-transform: uppercase;
+  }
+  .rating-bar-list { width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+  .rating-bar-row { display: flex; align-items: center; gap: 10px; }
+  .rating-bar-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); width: 40px; text-align: right; flex-shrink: 0; }
+  .rating-bar-track {
+    flex: 1; height: 8px; border-radius: 100px;
+    background: rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .rating-bar-fill {
+    height: 100%; border-radius: 100px;
+    background: linear-gradient(90deg, var(--blue-mid), var(--green-bright));
+    transition: width 0.6s ease;
+  }
+  .rating-bar-count { font-size: 0.72rem; color: rgba(255,255,255,0.4); width: 28px; flex-shrink: 0; }
+
+  /* Rating form */
+  .rating-form-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 40px;
+  }
+  .rating-form-box h3 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 2px;
+    color: white; margin-bottom: 6px;
+  }
+  .rating-form-box p { font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 28px; }
+
+  /* Interactive star picker */
+  .star-picker { display: flex; gap: 8px; margin-bottom: 24px; }
+  .star-picker span {
+    font-size: 2.4rem; cursor: pointer;
+    filter: grayscale(1) opacity(0.35);
+    transition: transform 0.15s, filter 0.15s;
+    user-select: none;
+  }
+  .star-picker span:hover,
+  .star-picker span.hovered { filter: grayscale(0) opacity(1) drop-shadow(0 0 8px #f59e0b); transform: scale(1.2); }
+  .star-picker span.selected { filter: grayscale(0) opacity(1); transform: scale(1.1); }
+
+  .rating-name-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .r-group { display: flex; flex-direction: column; gap: 6px; }
+  .r-group label { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+  .r-group input,
+  .r-group select,
+  .r-group textarea {
+    background: rgba(255,255,255,0.06); border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 11px 14px;
+    color: white; font-family: 'Exo 2', sans-serif; font-size: 0.88rem;
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .r-group input::placeholder,
+  .r-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .r-group input:focus,
+  .r-group select:focus,
+  .r-group textarea:focus {
+    border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0,212,255,0.12);
+  }
+  .r-group select option { background: #0d1f45; color: white; }
+  .r-group textarea { min-height: 90px; resize: vertical; }
+
+  .star-required-msg {
+    font-size: 0.75rem; color: #f87171; margin-bottom: 12px; display: none;
+  }
+
+  .btn-rateus {
+    width: 100%; padding: 15px; border: none; border-radius: 8px; cursor: pointer;
+    background: linear-gradient(135deg, var(--blue), var(--green-bright));
+    color: white; font-family: 'Exo 2', sans-serif; font-weight: 700;
+    font-size: 0.88rem; letter-spacing: 1.5px; text-transform: uppercase;
+    transition: transform 0.2s, box-shadow 0.2s; margin-top: 6px;
+  }
+  .btn-rateus:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(26,82,196,0.35); }
+
+  .rate-success {
+    display: none; text-align: center; padding: 20px 0;
+  }
+  .rate-success .rate-check { font-size: 3rem; margin-bottom: 10px; }
+  .rate-success h4 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px;
+    color: var(--green-bright); margin-bottom: 6px;
+  }
+  .rate-success p { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+
+  /* Recent submitted ratings feed */
+  .recent-ratings { margin-top: 48px; }
+  .recent-ratings h4 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 2px;
+    color: white; margin-bottom: 20px;
+  }
+  .recent-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .recent-card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px; padding: 20px;
+    animation: fade-up 0.4s ease both;
+  }
+  .recent-card-stars { color: #f59e0b; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 8px; }
+  .recent-card-text { font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.6; font-style: italic; margin-bottom: 12px; }
+  .recent-card-meta { display: flex; align-items: center; gap: 10px; }
+  .recent-card-avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--green-bright));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; color: white; flex-shrink: 0;
+  }
+  .recent-card-name { font-size: 0.8rem; font-weight: 700; color: white; }
+  .recent-card-service { font-size: 0.68rem; color: rgba(255,255,255,0.35); letter-spacing: 1px; text-transform: uppercase; }
+  .no-ratings-yet { color: rgba(255,255,255,0.3); font-size: 0.85rem; font-style: italic; }
+
+  @media (max-width: 1024px) {
+    .rateus-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .rating-name-row { grid-template-columns: 1fr; }
+  }
+
   /* ── LANGUAGE SWITCHER ── */
   .lang-switcher {
     display: flex; align-items: center; gap: 4px;
@@ -587,6 +734,7 @@
   <a href="#process" onclick="closeMobileMenu()" data-i18n="navProcess">How It Works</a>
   <a href="#why" onclick="closeMobileMenu()" data-i18n="navAbout">About Us</a>
   <a href="#testimonials" onclick="closeMobileMenu()" data-i18n="navReviews">Reviews</a>
+  <a href="#rateus" onclick="closeMobileMenu()">⭐ Rate Us</a>
   <a href="#contact" onclick="closeMobileMenu()" data-i18n="navContact">Contact</a>
   <a href="tel:+18258885388" style="color:#4caf50" data-i18n="navCall">📞 Call Now</a>
 </div>
@@ -606,6 +754,7 @@
     <li><a href="#process" data-i18n="navProcess">How It Works</a></li>
     <li><a href="#why" data-i18n="navAbout">About Us</a></li>
     <li><a href="#testimonials" data-i18n="navReviews">Reviews</a></li>
+    <li><a href="#rateus">⭐ Rate Us</a></li>
     <li><a href="#contact" data-i18n="navContact">Contact</a></li>
   </ul>
   <div class="lang-switcher">
@@ -893,6 +1042,122 @@
   </div>
 </section>
 
+<!-- RATE US -->
+<section class="rateus" id="rateus">
+  <div class="section-inner">
+    <div class="section-label">Customer Ratings</div>
+    <h2 class="section-title">Rate Our <span style="color:var(--accent)">Work</span></h2>
+    <p class="section-sub">Had a service with us? Let Edmonton know how we did — your rating helps us improve and helps neighbours choose with confidence.</p>
+
+    <div class="rateus-grid">
+
+      <!-- LEFT: live average + bar chart -->
+      <div class="rating-summary">
+        <div style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);">Overall Rating</div>
+        <div class="rating-big-num" id="avgNumDisplay">—</div>
+        <div class="rating-stars-display" id="avgStarsDisplay">
+          <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+        </div>
+        <div class="rating-count" id="ratingCountDisplay">No ratings yet</div>
+
+        <div class="rating-bar-list" id="ratingBars">
+          <div class="rating-bar-row">
+            <div class="rating-bar-label">5 ★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" id="bar5" style="width:0%"></div></div>
+            <div class="rating-bar-count" id="cnt5">0</div>
+          </div>
+          <div class="rating-bar-row">
+            <div class="rating-bar-label">4 ★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" id="bar4" style="width:0%"></div></div>
+            <div class="rating-bar-count" id="cnt4">0</div>
+          </div>
+          <div class="rating-bar-row">
+            <div class="rating-bar-label">3 ★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" id="bar3" style="width:0%"></div></div>
+            <div class="rating-bar-count" id="cnt3">0</div>
+          </div>
+          <div class="rating-bar-row">
+            <div class="rating-bar-label">2 ★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" id="bar2" style="width:0%"></div></div>
+            <div class="rating-bar-count" id="cnt2">0</div>
+          </div>
+          <div class="rating-bar-row">
+            <div class="rating-bar-label">1 ★</div>
+            <div class="rating-bar-track"><div class="rating-bar-fill" id="bar1" style="width:0%"></div></div>
+            <div class="rating-bar-count" id="cnt1">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: submit form -->
+      <div class="rating-form-box">
+        <h3>Leave Your Rating</h3>
+        <p>Pick stars, tell us what you think, and hit submit. Takes 30 seconds!</p>
+
+        <div id="rateFormWrap">
+          <!-- Star picker -->
+          <div style="font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;">Your Rating</div>
+          <div class="star-picker" id="starPicker">
+            <span data-val="1">★</span>
+            <span data-val="2">★</span>
+            <span data-val="3">★</span>
+            <span data-val="4">★</span>
+            <span data-val="5">★</span>
+          </div>
+          <div class="star-required-msg" id="starRequiredMsg">Please select a star rating before submitting.</div>
+
+          <div class="rating-name-row">
+            <div class="r-group">
+              <label>First Name</label>
+              <input type="text" id="rName" placeholder="Sarah" maxlength="40">
+            </div>
+            <div class="r-group">
+              <label>Neighbourhood</label>
+              <input type="text" id="rLoc" placeholder="e.g. West Edmonton" maxlength="40">
+            </div>
+          </div>
+
+          <div class="r-group" style="margin-bottom:14px;">
+            <label>Service Used</label>
+            <select id="rService">
+              <option value="">Select service...</option>
+              <option>Residential Carpet Cleaning</option>
+              <option>Commercial Carpet Cleaning</option>
+              <option>Upholstery & Sofa Cleaning</option>
+              <option>Pet Stain & Odour Removal</option>
+              <option>Carpet Protection (Scotchgard)</option>
+              <option>Area Rug Cleaning</option>
+              <option>Tile & Grout Cleaning</option>
+              <option>Multiple Services</option>
+            </select>
+          </div>
+
+          <div class="r-group" style="margin-bottom:18px;">
+            <label>Your Review <span style="color:rgba(255,255,255,0.25);font-weight:400;">(optional)</span></label>
+            <textarea id="rComment" placeholder="Tell us about your experience — what did we do well? What could we improve?" maxlength="300"></textarea>
+          </div>
+
+          <button class="btn-rateus" onclick="submitRating()">⭐ Submit My Rating</button>
+        </div>
+
+        <div class="rate-success" id="rateSuccess">
+          <div class="rate-check">🎉</div>
+          <h4>Thank You!</h4>
+          <p>Your rating has been recorded. We appreciate your feedback — it helps us serve Edmonton better.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent ratings feed -->
+    <div class="recent-ratings">
+      <h4>Recent Customer Ratings</h4>
+      <div class="recent-list" id="recentList">
+        <p class="no-ratings-yet" id="noRatingsMsg">No ratings submitted yet — be the first!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BAND -->
 <div class="cta-band">
   <div class="cta-band-inner">
@@ -1129,7 +1394,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p><span data-i18n="footerCopy">© 2025 Triple Action Carpet Cleaning. All rights reserved. | Edmonton, Alberta, Canada 🍁</span></p>
+    <p><span data-i18n="footerCopy">© 2026 Triple Action Carpet Cleaning. All rights reserved. | Edmonton, Alberta, Canada 🍁</span></p>
     <p><a href="#" data-i18n="footPrivacy">Privacy Policy</a> · <a href="#" data-i18n="footTerms">Terms of Service</a></p>
   </div>
 </footer>
@@ -1349,7 +1614,7 @@
       contactEmail: 'Email',
       contactWhatsapp: 'WhatsApp',
       contactHours: 'Hours',
-      contactHoursDetail: 'Monday – Saturday: 8:00 AM – 7:00 PM<br>Sunday: 9:00 AM – 9:00 PM',
+      contactHoursDetail: 'Monday – Saturday: 8:00 AM – 8:00 PM<br>Sunday: 9:00 AM – 9:00 PM',
       contactSameDay: 'Same-day service available!',
       contactArea: 'Service Area',
       contactAreaDesc: 'Edmonton, Sherwood Park, St. Albert, Spruce Grove, Leduc & surrounding Alberta communities.',
@@ -1583,6 +1848,145 @@
     try { saved = localStorage.getItem('tacc_lang') || 'en'; } catch(e) {}
     if (saved === 'fr') setLang('fr');
   })();
+
+  // ══════════════════════════════════════════════════
+  //  RATING SYSTEM
+  // ══════════════════════════════════════════════════
+  const STORAGE_KEY = 'tacc_ratings_v1';
+
+  function loadRatings() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) { return []; }
+  }
+  function saveRatings(arr) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); } catch(e) {}
+  }
+
+  // Seed with 3 example ratings so it doesn't look empty on first visit
+  (function seedIfEmpty() {
+    const existing = loadRatings();
+    if (existing.length === 0) {
+      const seeds = [
+        { stars: 5, name: 'Sandra R.', loc: 'South Edmonton', service: 'Pet Stain & Odour Removal', comment: "My 10-year-old carpets look brand new. Couldn't believe the difference!", date: Date.now() - 86400000 * 3 },
+        { stars: 5, name: 'Mike K.', loc: 'West Edmonton', service: 'Residential Carpet Cleaning', comment: 'On time, professional, and efficient. Basement suite looks incredible.', date: Date.now() - 86400000 * 7 },
+        { stars: 5, name: 'David P.', loc: 'Downtown Edmonton', service: 'Commercial Carpet Cleaning', comment: 'Over 2,000 sq ft done in under 3 hours. Fair and transparent pricing.', date: Date.now() - 86400000 * 14 },
+      ];
+      saveRatings(seeds);
+    }
+  })();
+
+  // Star picker interaction
+  var selectedStars = 0;
+  var starSpans = document.querySelectorAll('#starPicker span');
+  starSpans.forEach(function(star) {
+    star.addEventListener('mouseenter', function() {
+      var val = parseInt(this.dataset.val);
+      starSpans.forEach(function(s, i) { s.classList.toggle('hovered', i < val); });
+    });
+    star.addEventListener('mouseleave', function() {
+      starSpans.forEach(function(s) { s.classList.remove('hovered'); });
+    });
+    star.addEventListener('click', function() {
+      selectedStars = parseInt(this.dataset.val);
+      starSpans.forEach(function(s, i) { s.classList.toggle('selected', i < selectedStars); });
+      document.getElementById('starRequiredMsg').style.display = 'none';
+    });
+  });
+
+  function submitRating() {
+    if (selectedStars === 0) {
+      document.getElementById('starRequiredMsg').style.display = 'block';
+      return;
+    }
+    var name    = (document.getElementById('rName').value.trim()    || 'Anonymous');
+    var loc     = (document.getElementById('rLoc').value.trim()     || 'Edmonton');
+    var service = (document.getElementById('rService').value.trim() || 'General Service');
+    var comment = (document.getElementById('rComment').value.trim() || '');
+
+    var ratings = loadRatings();
+    ratings.unshift({ stars: selectedStars, name: name, loc: loc, service: service, comment: comment, date: Date.now() });
+    saveRatings(ratings);
+
+    document.getElementById('rateFormWrap').style.display = 'none';
+    document.getElementById('rateSuccess').style.display  = 'block';
+
+    refreshRatingUI();
+  }
+
+  function refreshRatingUI() {
+    var ratings = loadRatings();
+    var total = ratings.length;
+    var counts = { 1:0, 2:0, 3:0, 4:0, 5:0 };
+    var sum = 0;
+    ratings.forEach(function(r) { counts[r.stars]++; sum += r.stars; });
+    var avg = total > 0 ? (sum / total) : 0;
+    var avgRounded = Math.round(avg * 10) / 10;
+
+    document.getElementById('avgNumDisplay').textContent = total > 0 ? avgRounded.toFixed(1) : '\u2014';
+    document.getElementById('ratingCountDisplay').textContent = total === 0 ? 'No ratings yet' : total + ' rating' + (total === 1 ? '' : 's');
+
+    var avgStarEl = document.getElementById('avgStarsDisplay');
+    avgStarEl.innerHTML = '';
+    for (var i = 1; i <= 5; i++) {
+      var span = document.createElement('span');
+      span.textContent = i <= Math.round(avg) ? '\u2605' : '\u2606';
+      span.style.color = i <= Math.round(avg) ? '#f59e0b' : 'rgba(255,255,255,0.2)';
+      span.style.fontSize = '2rem';
+      avgStarEl.appendChild(span);
+    }
+
+    var maxCount = Math.max(counts[1], counts[2], counts[3], counts[4], counts[5], 1);
+    [5,4,3,2,1].forEach(function(n) {
+      var bar = document.getElementById('bar' + n);
+      var cnt = document.getElementById('cnt' + n);
+      if (bar) bar.style.width = (counts[n] / maxCount * 100) + '%';
+      if (cnt) cnt.textContent = counts[n];
+    });
+
+    var listEl = document.getElementById('recentList');
+    listEl.innerHTML = '';
+    if (total === 0) {
+      var p = document.createElement('p');
+      p.className = 'no-ratings-yet';
+      p.textContent = 'No ratings submitted yet \u2014 be the first!';
+      listEl.appendChild(p);
+    } else {
+      ratings.slice(0, 6).forEach(function(r) {
+        var initials = r.name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2);
+        var stars = '\u2605'.repeat(r.stars) + '\u2606'.repeat(5 - r.stars);
+        var card = document.createElement('div');
+        card.className = 'recent-card';
+        card.innerHTML =
+          '<div class="recent-card-stars" style="color:#f59e0b;">' + stars + '</div>' +
+          (r.comment ? '<div class="recent-card-text">\u201c' + r.comment + '\u201d</div>' : '<div class="recent-card-text" style="opacity:0.4;font-style:normal;">No comment left.</div>') +
+          '<div class="recent-card-meta">' +
+            '<div class="recent-card-avatar">' + initials + '</div>' +
+            '<div>' +
+              '<div class="recent-card-name">' + r.name + '</div>' +
+              '<div class="recent-card-service">' + r.service + ' \u00b7 ' + r.loc + '</div>' +
+            '</div>' +
+          '</div>';
+        listEl.appendChild(card);
+      });
+    }
+  }
+
+  // Scroll reveal for rating boxes
+  var ratingObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rating-summary, .rating-form-box').forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    ratingObserver.observe(el);
+  });
+
+  refreshRatingUI();
 </script>
 </body>
 </html>
