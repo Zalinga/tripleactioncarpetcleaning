@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmlRoot">
 <head>
+
 <meta name="google-site-verification" content="QpdGfxkbNqIYx8g3FLk-VOnyr7LSQqdroC6uURuFxv0" />
 
   <!-- Google tag (gtag.js) -->
@@ -12,10 +13,9 @@
 
   gtag('config', 'G-8GGB2VQPMQ');
 </script>
-  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Triple Action Carpet Cleaning | Edmonton, Alberta</title>
+<title id="pageTitle">Triple Action Carpet Cleaning | Edmonton, Alberta</title>
 <meta name="description" content="Professional carpet cleaning in Edmonton, Alberta. Serving residential and commercial clients across the Edmonton area with triple-action deep clean technology.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -501,6 +501,8 @@
     transition: background 0.2s, transform 0.2s;
   }
   .social-link:hover { background: var(--blue-mid); transform: translateY(-2px); }
+  /* Social icon SVGs */
+  .social-link svg { width: 18px; height: 18px; fill: currentColor; }
 
   /* floating call btn */
   .float-call {
@@ -548,6 +550,32 @@
     section { padding: 72px 5vw; }
     .testimonials-grid { grid-template-columns: 1fr; }
   }
+
+  /* ── LANGUAGE SWITCHER ── */
+  .lang-switcher {
+    display: flex; align-items: center; gap: 4px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 4px;
+    margin-right: 12px;
+  }
+  .lang-btn {
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,255,255,0.55);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 100px;
+    transition: all 0.2s;
+  }
+  .lang-btn.active {
+    background: var(--blue-mid);
+    color: white;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.4);
+  }
+  .lang-btn:hover:not(.active) { color: white; }
+
 </style>
 </head>
 <body>
@@ -555,12 +583,12 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
-  <a href="#services" onclick="closeMobileMenu()">Services</a>
-  <a href="#process" onclick="closeMobileMenu()">How It Works</a>
-  <a href="#why" onclick="closeMobileMenu()">About Us</a>
-  <a href="#testimonials" onclick="closeMobileMenu()">Reviews</a>
-  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-  <a href="tel:+18258885388" style="color:#4caf50">📞 Call Now</a>
+  <a href="#services" onclick="closeMobileMenu()" data-i18n="navServices">Services</a>
+  <a href="#process" onclick="closeMobileMenu()" data-i18n="navProcess">How It Works</a>
+  <a href="#why" onclick="closeMobileMenu()" data-i18n="navAbout">About Us</a>
+  <a href="#testimonials" onclick="closeMobileMenu()" data-i18n="navReviews">Reviews</a>
+  <a href="#contact" onclick="closeMobileMenu()" data-i18n="navContact">Contact</a>
+  <a href="tel:+18258885388" style="color:#4caf50" data-i18n="navCall">📞 Call Now</a>
 </div>
 
 <!-- NAV -->
@@ -574,13 +602,17 @@
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#process">How It Works</a></li>
-    <li><a href="#why">About Us</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#services" data-i18n="navServices">Services</a></li>
+    <li><a href="#process" data-i18n="navProcess">How It Works</a></li>
+    <li><a href="#why" data-i18n="navAbout">About Us</a></li>
+    <li><a href="#testimonials" data-i18n="navReviews">Reviews</a></li>
+    <li><a href="#contact" data-i18n="navContact">Contact</a></li>
   </ul>
-  <a href="tel:+18258885388" class="nav-cta">📞 Free Quote</a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" id="btnFR" onclick="setLang('fr')">FR</button>
+  </div>
+  <a href="tel:+18258885388" class="nav-cta" data-i18n="navCta">📞 Free Quote</a>
   <div class="hamburger" onclick="openMobileMenu()">
     <span></span><span></span><span></span>
   </div>
@@ -594,29 +626,29 @@
 
   <div class="hero-content">
     <div class="hero-left">
-      <div class="hero-badge">🍁 Proudly Serving Edmonton, Alberta</div>
+      <div class="hero-badge"><span data-i18n="heroBadge">🍁 Proudly Serving Edmonton, Alberta</span></div>
       <h1 class="hero-title">
-        Deep Clean.<br>
-        <span class="highlight">Triple Action.</span><br>
-        <span class="green-text">Guaranteed.</span>
+        <span data-i18n="heroLine1">Deep Clean.</span><br>
+        <span class="highlight" data-i18n="heroLine2">Triple Action.</span><br>
+        <span class="green-text" data-i18n="heroLine3">Guaranteed.</span>
       </h1>
-      <p class="hero-sub">Edmonton's most trusted carpet cleaning company. We use a proven three-step process — pre-treatment, deep extraction, and protective finish — to restore your carpets to like-new condition.</p>
+      <p class="hero-sub"><span data-i18n="heroSub">Edmonton's most trusted carpet cleaning company. We use a proven three-step process — pre-treatment, deep extraction, and protective finish — to restore your carpets to like-new condition.</span></p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">📋 Get Free Quote</a>
+        <a href="#contact" class="btn-primary"><span data-i18n="heroBtnQuote">📋 Get Free Quote</span></a>
         <a href="tel:+18258885388" class="btn-secondary">📞 +1-825-888-5388</a>
       </div>
       <div class="hero-stats">
         <div class="stat">
           <div class="stat-num">500<span>+</span></div>
-          <div class="stat-label">Homes Cleaned</div>
+          <div class="stat-label" data-i18n="statHomes">Homes Cleaned</div>
         </div>
         <div class="stat">
           <div class="stat-num">100<span>%</span></div>
-          <div class="stat-label">Satisfaction Rate</div>
+          <div class="stat-label" data-i18n="statSatisfaction">Satisfaction Rate</div>
         </div>
         <div class="stat">
           <div class="stat-num">5<span>★</span></div>
-          <div class="stat-label">Average Rating</div>
+          <div class="stat-label" data-i18n="statRating">Average Rating</div>
         </div>
       </div>
     </div>
@@ -625,7 +657,6 @@
         <div class="logo-glow"></div>
         <div class="logo-ring"></div>
         <div class="logo-ring-2"></div>
-        <!-- Actual company logo -->
         <img src="https://raw.githubusercontent.com/Zalinga/tripleactioncarpetcleaning/main/tacc%20logo.jpeg"
              alt="Triple Action Carpet Cleaning Logo"
              class="logo-img"
@@ -643,7 +674,7 @@
 
   <div class="scroll-hint">
     <div class="scroll-line"></div>
-    Scroll
+    <span data-i18n="scroll">Scroll</span>
   </div>
 </section>
 
@@ -653,40 +684,40 @@
     <div class="trust-item">
       <div class="trust-icon">✅</div>
       <div class="trust-text">
-        <strong>Licensed & Insured</strong>
-        <span>Fully certified professionals</span>
+        <strong data-i18n="trustLicensed">Licensed & Insured</strong>
+        <span data-i18n="trustLicensedSub">Fully certified professionals</span>
       </div>
     </div>
     <div class="trust-divider"></div>
     <div class="trust-item">
       <div class="trust-icon">🍁</div>
       <div class="trust-text">
-        <strong>Alberta-Based</strong>
-        <span>Local Edmonton company</span>
+        <strong data-i18n="trustAlberta">Alberta-Based</strong>
+        <span data-i18n="trustAlbertaSub">Local Edmonton company</span>
       </div>
     </div>
     <div class="trust-divider"></div>
     <div class="trust-item">
       <div class="trust-icon">⚡</div>
       <div class="trust-text">
-        <strong>Same-Day Service</strong>
-        <span>Available for urgent bookings</span>
+        <strong data-i18n="trustSameDay">Same-Day Service</strong>
+        <span data-i18n="trustSameDaySub">Available for urgent bookings</span>
       </div>
     </div>
     <div class="trust-divider"></div>
     <div class="trust-item">
       <div class="trust-icon">💧</div>
       <div class="trust-text">
-        <strong>Eco-Friendly Products</strong>
-        <span>Safe for kids & pets</span>
+        <strong data-i18n="trustEco">Eco-Friendly Products</strong>
+        <span data-i18n="trustEcoSub">Safe for kids & pets</span>
       </div>
     </div>
     <div class="trust-divider"></div>
     <div class="trust-item">
       <div class="trust-icon">🏆</div>
       <div class="trust-text">
-        <strong>Satisfaction Guarantee</strong>
-        <span>100% money-back promise</span>
+        <strong data-i18n="trustGuarantee">Satisfaction Guarantee</strong>
+        <span data-i18n="trustGuaranteeSub">100% money-back promise</span>
       </div>
     </div>
   </div>
@@ -697,48 +728,48 @@
   <div class="section-inner">
     <div class="services-header">
       <div>
-        <div class="section-label">What We Do</div>
-        <h2 class="section-title">Our Cleaning <span class="accent">Services</span></h2>
-        <p class="section-sub">Professional-grade cleaning solutions for every surface in your Edmonton home or business.</p>
+        <div class="section-label" data-i18n="servLabel">What We Do</div>
+        <h2 class="section-title"><span data-i18n="servTitle">Our Cleaning</span> <span class="accent" data-i18n="servTitleAccent">Services</span></h2>
+        <p class="section-sub" data-i18n="servSub">Professional-grade cleaning solutions for every surface in your Edmonton home or business.</p>
       </div>
-      <a href="#contact" class="btn-primary" style="white-space:nowrap">Book a Service →</a>
+      <a href="#contact" class="btn-primary" style="white-space:nowrap"><span data-i18n="servBook">Book a Service →</span></a>
     </div>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">🏠</div>
-        <h3>Residential Carpet Cleaning</h3>
-        <p>Deep steam extraction removes embedded dirt, allergens, and stains from all carpet types. We restore freshness and extend carpet life.</p>
-        <span class="service-tag">Most Popular</span>
+        <h3 data-i18n="svc1Title">Residential Carpet Cleaning</h3>
+        <p data-i18n="svc1Desc">Deep steam extraction removes embedded dirt, allergens, and stains from all carpet types. We restore freshness and extend carpet life.</p>
+        <span class="service-tag" data-i18n="svc1Tag">Most Popular</span>
       </div>
       <div class="service-card">
         <div class="service-icon">🏢</div>
-        <h3>Commercial Carpet Cleaning</h3>
-        <p>Minimal disruption, maximum results. We work around your schedule to keep your office or commercial space spotless and professional.</p>
-        <span class="service-tag">Available 24/7</span>
+        <h3 data-i18n="svc2Title">Commercial Carpet Cleaning</h3>
+        <p data-i18n="svc2Desc">Minimal disruption, maximum results. We work around your schedule to keep your office or commercial space spotless and professional.</p>
+        <span class="service-tag" data-i18n="svc2Tag">Available 24/7</span>
       </div>
       <div class="service-card">
         <div class="service-icon">🛋️</div>
-        <h3>Upholstery & Sofa Cleaning</h3>
-        <p>Revive your sofas, chairs, and furniture. Our upholstery experts safely deep-clean fabric and remove stains without damage.</p>
-        <span class="service-tag">Gentle Process</span>
+        <h3 data-i18n="svc3Title">Upholstery & Sofa Cleaning</h3>
+        <p data-i18n="svc3Desc">Revive your sofas, chairs, and furniture. Our upholstery experts safely deep-clean fabric and remove stains without damage.</p>
+        <span class="service-tag" data-i18n="svc3Tag">Gentle Process</span>
       </div>
       <div class="service-card">
         <div class="service-icon">🐾</div>
-        <h3>Pet Stain & Odour Removal</h3>
-        <p>Specialized enzyme-based treatments that neutralize pet odours at the source — not just masking them — and permanently lift stains.</p>
-        <span class="service-tag">Enzyme-Based</span>
+        <h3 data-i18n="svc4Title">Pet Stain & Odour Removal</h3>
+        <p data-i18n="svc4Desc">Specialized enzyme-based treatments that neutralize pet odours at the source — not just masking them — and permanently lift stains.</p>
+        <span class="service-tag" data-i18n="svc4Tag">Enzyme-Based</span>
       </div>
       <div class="service-card">
         <div class="service-icon">🛡️</div>
-        <h3>Carpet Protection & Scotchgard</h3>
-        <p>Post-clean protective coating that repels spills and reduces soiling, keeping your carpets cleaner for longer between services.</p>
-        <span class="service-tag">Add-On Service</span>
+        <h3 data-i18n="svc5Title">Carpet Protection & Scotchgard</h3>
+        <p data-i18n="svc5Desc">Post-clean protective coating that repels spills and reduces soiling, keeping your carpets cleaner for longer between services.</p>
+        <span class="service-tag" data-i18n="svc5Tag">Add-On Service</span>
       </div>
       <div class="service-card">
         <div class="service-icon">🪟</div>
-        <h3>Area Rug </h3>
-        <p>Safe, effective cleaning for all area rug types including Persian, wool, and synthetic.</p>
-        <span class="service-tag">All Rug Types</span>
+        <h3 data-i18n="svc6Title">Area Rug & Tile Cleaning</h3>
+        <p data-i18n="svc6Desc">Safe, effective cleaning for all area rug types including Persian, wool, and synthetic. Also includes tile and grout deep cleaning.</p>
+        <span class="service-tag" data-i18n="svc6Tag">All Rug Types</span>
       </div>
     </div>
   </div>
@@ -747,29 +778,29 @@
 <!-- PROCESS -->
 <section class="process" id="process">
   <div class="section-inner">
-    <div class="section-label">Our Method</div>
-    <h2 class="section-title">The Triple Action <span style="color:var(--accent)">Process</span></h2>
-    <p class="section-sub">Three precision steps. One exceptional result. This is why our name says it all.</p>
+    <div class="section-label" data-i18n="procLabel">Our Method</div>
+    <h2 class="section-title"><span data-i18n="procTitle">The Triple Action</span> <span style="color:var(--accent)" data-i18n="procTitleAccent">Process</span></h2>
+    <p class="section-sub" data-i18n="procSub">Three precision steps. One exceptional result. This is why our name says it all.</p>
     <div class="process-steps">
       <div class="process-step">
         <div class="step-circle">1</div>
-        <h4>Pre-Inspection & Pre-Treatment</h4>
-        <p>We assess your carpets, identify stain types, and apply targeted pre-treatment solutions to loosen embedded soils before cleaning begins.</p>
+        <h4 data-i18n="proc1Title">Pre-Inspection & Pre-Treatment</h4>
+        <p data-i18n="proc1Desc">We assess your carpets, identify stain types, and apply targeted pre-treatment solutions to loosen embedded soils before cleaning begins.</p>
       </div>
       <div class="process-step">
         <div class="step-circle">2</div>
-        <h4>Deep Hot Water Extraction</h4>
-        <p>High-powered truck-mount steam cleaning penetrates deep into carpet fibres, flushing out dirt, bacteria, and allergens completely.</p>
+        <h4 data-i18n="proc2Title">Deep Hot Water Extraction</h4>
+        <p data-i18n="proc2Desc">High-powered truck-mount steam cleaning penetrates deep into carpet fibres, flushing out dirt, bacteria, and allergens completely.</p>
       </div>
       <div class="process-step">
         <div class="step-circle">3</div>
-        <h4>Finish & Protective Coating</h4>
-        <p>pH-balanced rinse restores fibre integrity. Optional Scotchgard protective layer is applied, leaving carpets fresh, bright, and protected.</p>
+        <h4 data-i18n="proc3Title">Finish & Protective Coating</h4>
+        <p data-i18n="proc3Desc">pH-balanced rinse restores fibre integrity. Optional Scotchgard protective layer is applied, leaving carpets fresh, bright, and protected.</p>
       </div>
       <div class="process-step">
         <div class="step-circle" style="background:linear-gradient(135deg,var(--green),var(--green-bright));">✓</div>
-        <h4>Post-Inspection & Your Guarantee</h4>
-        <p>We walk through results with you before we leave. Not satisfied? We come back — at no extra charge. That's our Edmonton promise.</p>
+        <h4 data-i18n="proc4Title">Post-Inspection & Your Guarantee</h4>
+        <p data-i18n="proc4Desc">We walk through results with you before we leave. Not satisfied? We come back — at no extra charge. That's our Edmonton promise.</p>
       </div>
     </div>
   </div>
@@ -780,36 +811,36 @@
   <div class="section-inner">
     <div class="why-grid">
       <div>
-        <div class="section-label">Why Triple Action</div>
-        <h2 class="section-title">Edmonton Chooses <span class="accent">Us</span></h2>
-        <p class="section-sub">We're not a franchise. We're your neighbours — a local Edmonton team that takes pride in every job.</p>
+        <div class="section-label" data-i18n="whyLabel">Why Triple Action</div>
+        <h2 class="section-title"><span data-i18n="whyTitle">Edmonton Chooses</span> <span class="accent" data-i18n="whyTitleAccent">Us</span></h2>
+        <p class="section-sub" data-i18n="whySub">We're not a franchise. We're your neighbours — a local Edmonton team that takes pride in every job.</p>
         <div class="why-features" style="margin-top:40px;">
           <div class="why-feature">
             <div class="why-feature-icon">🌡️</div>
             <div>
-              <h4>Steam Technology</h4>
-              <p>Our professional-grade units generate higher heat and suction than portable machines — delivering a deeper, faster-drying clean.</p>
+              <h4 data-i18n="why1Title">Truck-Mount Steam Technology</h4>
+              <p data-i18n="why1Desc">Our professional-grade truck-mounted units generate higher heat and suction than portable machines — delivering a deeper, faster-drying clean.</p>
             </div>
           </div>
           <div class="why-feature">
             <div class="why-feature-icon">🧪</div>
             <div>
-              <h4>Non-Toxic, Safe Chemicals</h4>
-              <p>All cleaning agents are Health Canada approved, biodegradable, and completely safe for children, pets, and allergy sufferers.</p>
+              <h4 data-i18n="why2Title">Non-Toxic, Safe Chemicals</h4>
+              <p data-i18n="why2Desc">All cleaning agents are Health Canada approved, biodegradable, and completely safe for children, pets, and allergy sufferers.</p>
             </div>
           </div>
           <div class="why-feature">
             <div class="why-feature-icon">📅</div>
             <div>
-              <h4>Flexible Scheduling</h4>
-              <p>Evenings, weekends, same-day — we work around your life, not the other way around. Serving all of Edmonton and surrounding areas.</p>
+              <h4 data-i18n="why3Title">Flexible Scheduling</h4>
+              <p data-i18n="why3Desc">Evenings, weekends, same-day — we work around your life, not the other way around. Serving all of Edmonton and surrounding areas.</p>
             </div>
           </div>
           <div class="why-feature">
             <div class="why-feature-icon">💰</div>
             <div>
-              <h4>Upfront, Honest Pricing</h4>
-              <p>Free in-home estimates. No hidden fees. No surprise charges. You know the exact price before we start — always.</p>
+              <h4 data-i18n="why4Title">Upfront, Honest Pricing</h4>
+              <p data-i18n="why4Desc">Free in-home estimates. No hidden fees. No surprise charges. You know the exact price before we start — always.</p>
             </div>
           </div>
         </div>
@@ -817,7 +848,7 @@
       <div class="why-visual">
         <div class="why-visual-inner">
           <div class="why-big-num">500+</div>
-          <p>Happy Edmonton Families</p>
+          <p data-i18n="whyFamilies">Happy Edmonton Families</p>
           <div style="display:flex;gap:8px;margin-top:16px;">
             <span style="background:rgba(255,255,255,0.1);padding:6px 16px;border-radius:100px;font-size:0.75rem;letter-spacing:1px;">5★ Rated</span>
             <span style="background:rgba(76,175,80,0.2);padding:6px 16px;border-radius:100px;font-size:0.75rem;letter-spacing:1px;color:#4caf50;">Insured</span>
@@ -831,8 +862,8 @@
 <!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="section-inner">
-    <div class="section-label">What Clients Say</div>
-    <h2 class="section-title">Real Edmonton <span class="accent">Reviews</span></h2>
+    <div class="section-label" data-i18n="testLabel">What Clients Say</div>
+    <h2 class="section-title"><span data-i18n="testTitle">Real Edmonton</span> <span class="accent" data-i18n="testTitleAccent">Reviews</span></h2>
     <div class="testimonials-grid">
       <div class="testimonial-card">
         <div class="stars">★★★★★</div>
@@ -865,10 +896,10 @@
 <!-- CTA BAND -->
 <div class="cta-band">
   <div class="cta-band-inner">
-    <h2>Ready for Spotless Carpets?</h2>
-    <p>Get your free, no-obligation quote today. We serve Edmonton and all surrounding communities in Alberta — same-day service available.</p>
+    <h2 data-i18n="ctaTitle">Ready for Spotless Carpets?</h2>
+    <p data-i18n="ctaSub">Get your free, no-obligation quote today. We serve Edmonton and all surrounding communities in Alberta — same-day service available.</p>
     <div class="cta-band-actions">
-      <a href="#contact" class="btn-white">📋 Get Free Quote</a>
+      <a href="#contact" class="btn-white"><span data-i18n="ctaBtnQuote">📋 Get Free Quote</span></a>
       <a href="tel:+18258885388" class="btn-outline-white">📞 +1-825-888-5388</a>
     </div>
   </div>
@@ -877,51 +908,51 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="section-inner">
-    <div class="section-label">Get In Touch</div>
-    <h2 class="section-title">Book Your <span class="accent">Clean</span></h2>
+    <div class="section-label" data-i18n="contactLabel">Get In Touch</div>
+    <h2 class="section-title"><span data-i18n="contactTitle">Book Your</span> <span class="accent" data-i18n="contactTitleAccent">Clean</span></h2>
     <div class="contact-grid">
       <div>
         <div class="contact-info">
           <div class="contact-item">
             <div class="contact-item-icon">📍</div>
             <div>
-              <h4>Address</h4>
+              <h4 data-i18n="contactAddress">Address</h4>
               <p>29 Street SW<br>Edmonton, Alberta, Canada<br>T6X 3E2</p>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">📞</div>
             <div>
-              <h4>Phone</h4>
+              <h4 data-i18n="contactPhone">Phone</h4>
               <a href="tel:+18258885388">+1-825-888-5388</a>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">✉️</div>
             <div>
-              <h4>Email</h4>
+              <h4 data-i18n="contactEmail">Email</h4>
               <a href="mailto:tripleactioncarpetcleaning6@gmail.com">tripleactioncarpetcleaning6@gmail.com</a>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">💬</div>
             <div>
-              <h4>WhatsApp</h4>
+              <h4 data-i18n="contactWhatsapp">WhatsApp</h4>
               <a href="https://wa.me/18258885388?text=Hi%20Triple%20Action%2C%20I'd%20like%20a%20free%20carpet%20cleaning%20quote!" target="_blank" style="color:#25d366;">+1-825-888-5388 (Chat Now)</a>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">🕐</div>
             <div>
-              <h4>Hours</h4>
-              <p>Monday – Saturday: 9:00 AM – 9:00 PM<br>Sunday: 9:00 AM – 9:00 PM<br><span style="color:var(--green);font-weight:700;">Same-day service available!</span></p>
+              <h4 data-i18n="contactHours">Hours</h4>
+              <p><span data-i18n="contactHoursDetail">Monday – Saturday: 8:00 AM – 7:00 PM<br>Sunday: 9:00 AM – 9:00 PM</span><br><span style="color:var(--green);font-weight:700;" data-i18n="contactSameDay">Same-day service available!</span></p>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">🍁</div>
             <div>
-              <h4>Service Area</h4>
-              <p>Edmonton, Sherwood Park, St. Albert, Spruce Grove, Leduc & surrounding Alberta communities.</p>
+              <h4 data-i18n="contactArea">Service Area</h4>
+              <p data-i18n="contactAreaDesc">Edmonton, Sherwood Park, St. Albert, Spruce Grove, Leduc & surrounding Alberta communities.</p>
             </div>
           </div>
         </div>
@@ -935,58 +966,56 @@
       </div>
       <div>
         <div style="background:var(--off-white);border-radius:20px;padding:40px;">
-          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--navy);margin-bottom:8px;">Free Quote Request</h3>
-          <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:28px;">Fill out the form and we'll get back to you within 2 hours during business hours.</p>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:2px;color:var(--navy);margin-bottom:8px;" data-i18n="formTitle">Free Quote Request</h3>
+          <p style="font-size:0.82rem;color:var(--text-light);margin-bottom:28px;" data-i18n="formSub">Fill out the form and we'll get back to you within 2 hours during business hours.</p>
 
           <!-- SUCCESS MESSAGE (hidden by default) -->
           <div id="formSuccess" style="display:none;background:linear-gradient(135deg,#3a7d44,#4caf50);border-radius:12px;padding:28px;text-align:center;color:white;">
             <div style="font-size:2.5rem;margin-bottom:12px;">✅</div>
-            <h4 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;margin-bottom:8px;">Quote Request Sent!</h4>
+            <h4 style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;margin-bottom:8px;" data-i18n="successTitle">Quote Request Sent!</h4>
             <p style="font-size:0.9rem;opacity:0.92;line-height:1.6;margin-bottom:8px;">
-              ✉️ Your request has been emailed to our team. We'll reply within 2 hours during business hours.
+              <span data-i18n="successMsg">✉️ Your request has been emailed to our team. We'll reply within 2 hours during business hours.</span>
             </p>
-            <p style="font-size:0.82rem;opacity:0.75;margin-bottom:20px;">Want a faster reply? Tap the button below to also send us your details on WhatsApp.</p>
-            <!-- WhatsApp button — user clicks manually, fully separate from form email -->
+            <p style="font-size:0.82rem;opacity:0.75;margin-bottom:20px;" data-i18n="successWaHint">Want a faster reply? Tap the button below to also send us your details on WhatsApp.</p>
             <a id="waFollowUpBtn"
                href="https://wa.me/18258885388"
                target="_blank"
                rel="noopener"
                style="display:inline-flex;align-items:center;gap:10px;background:white;color:#25a244;padding:14px 28px;border-radius:8px;font-weight:800;font-size:0.9rem;letter-spacing:1px;text-decoration:none;text-transform:uppercase;box-shadow:0 4px 16px rgba(0,0,0,0.15);">
-              💬 Send My Details on WhatsApp
+              <span data-i18n="successWaBtn">💬 Send My Details on WhatsApp</span>
             </a>
-            <p style="font-size:0.72rem;opacity:0.6;margin-top:14px;">This opens WhatsApp with your info pre-filled — just tap Send.</p>
+            <p style="font-size:0.72rem;opacity:0.6;margin-top:14px;" data-i18n="successWaTip">This opens WhatsApp with your info pre-filled — just tap Send.</p>
           </div>
 
           <form id="quoteForm" class="contact-form"
                 action="https://formspree.io/f/xnjlllko"
                 method="POST">
-            <!-- Hidden fields for routing -->
             <input type="hidden" name="_subject" value="🧹 New Quote Request – Triple Action Carpet Cleaning">
             <input type="hidden" name="company_whatsapp" value="+1-825-888-5388">
             <input type="hidden" name="company_address" value="29 Street SW, Edmonton, Alberta, Canada T6X 3E2">
 
             <div class="form-row">
               <div class="form-group">
-                <label>First Name</label>
+                <label data-i18n="formFirst">First Name</label>
                 <input type="text" name="first_name" placeholder="John" required>
               </div>
               <div class="form-group">
-                <label>Last Name</label>
+                <label data-i18n="formLast">Last Name</label>
                 <input type="text" name="last_name" placeholder="Smith" required>
               </div>
             </div>
             <div class="form-group">
-              <label>Phone Number</label>
+              <label data-i18n="formPhone">Phone Number</label>
               <input type="tel" name="phone" placeholder="+1 (780) 000-0000" required>
             </div>
             <div class="form-group">
-              <label>Email Address</label>
+              <label data-i18n="formEmailLabel">Email Address</label>
               <input type="email" name="email" placeholder="your@email.com" required>
             </div>
             <div class="form-group">
-              <label>Service Required</label>
+              <label data-i18n="formService">Service Required</label>
               <select name="service" required>
-                <option value="">Select a service...</option>
+                <option value="" data-i18n="optService">Select a service...</option>
                 <option>Residential Carpet Cleaning</option>
                 <option>Commercial Carpet Cleaning</option>
                 <option>Upholstery &amp; Sofa Cleaning</option>
@@ -999,9 +1028,9 @@
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label>Home Size</label>
+                <label data-i18n="formSize">Home Size</label>
                 <select name="home_size">
-                  <option value="">Select...</option>
+                  <option value="" data-i18n="optSize">Select...</option>
                   <option>Under 1,000 sq ft</option>
                   <option>1,000 – 1,500 sq ft</option>
                   <option>1,500 – 2,500 sq ft</option>
@@ -1010,26 +1039,25 @@
                 </select>
               </div>
               <div class="form-group">
-                <label>Preferred Date</label>
+                <label data-i18n="formDate">Preferred Date</label>
                 <input type="date" name="preferred_date">
               </div>
             </div>
             <div class="form-group">
-              <label>Additional Details</label>
+              <label data-i18n="formDetails">Additional Details</label>
               <textarea name="message" placeholder="Describe your carpet situation, any specific stains, number of rooms, etc."></textarea>
             </div>
-            <button type="submit" class="form-submit" id="submitBtn">Send My Free Quote Request 🧹</button>
+            <button type="submit" class="form-submit" id="submitBtn"><span data-i18n="formSubmit">Send My Free Quote Request 🧹</span></button>
           </form>
 
-          <!-- WhatsApp quick contact below form -->
           <div style="margin-top:20px;padding:16px;background:white;border-radius:10px;border:1px solid #e8edf8;display:flex;align-items:center;gap:14px;">
             <span style="font-size:1.6rem;">💬</span>
             <div>
-              <div style="font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:2px;">Prefer WhatsApp?</div>
+              <div style="font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-light);margin-bottom:2px;" data-i18n="preferWa">Prefer WhatsApp?</div>
               <a href="https://wa.me/18258885388?text=Hi%20Triple%20Action%2C%20I'd%20like%20to%20get%20a%20free%20carpet%20cleaning%20quote."
                  target="_blank"
                  style="color:#25d366;font-weight:700;font-size:0.92rem;text-decoration:none;">
-                Message us directly → +1-825-888-5388
+                <span data-i18n="waDirectMsg">Message us directly → +1-825-888-5388</span>
               </a>
             </div>
           </div>
@@ -1051,47 +1079,58 @@
           <div class="sub">Carpet Cleaning</div>
         </div>
       </div>
-      <p>Edmonton's trusted carpet cleaning specialists. Residential and commercial cleaning with a 100% satisfaction guarantee — because your home deserves the best.</p>
+      <p data-i18n="footerDesc">Edmonton's trusted carpet cleaning specialists. Residential and commercial cleaning with a 100% satisfaction guarantee — because your home deserves the best.</p>
+
+      <!-- ── SOCIAL LINKS (updated) ── -->
       <div class="social-links" style="margin-top:20px;">
-        <a href="#" class="social-link">f</a>
-        <a href="#" class="social-link">in</a>
-        <a href="#" class="social-link">G</a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/tripleactioncarpetcleaningca/" target="_blank" rel="noopener" class="social-link" title="Follow us on Facebook" style="background:rgba(24,119,242,0.15);border-color:rgba(24,119,242,0.3);">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/nav.5005?igsh=a3BxeG5namo3ODNm&utm_source=qr" target="_blank" rel="noopener" class="social-link" title="Follow us on Instagram" style="background:rgba(193,53,132,0.15);border-color:rgba(193,53,132,0.3);">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@triple.action.car?_r=1&_t=ZS-96NIcgG28yz" target="_blank" rel="noopener" class="social-link" title="Follow us on TikTok" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15);">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
+        </a>
       </div>
     </div>
     <div class="footer-col">
-      <h4>Services</h4>
+      <h4 data-i18n="footerServices">Services</h4>
       <ul>
-        <li><a href="#services">Residential Cleaning</a></li>
-        <li><a href="#services">Commercial Cleaning</a></li>
-        <li><a href="#services">Upholstery Cleaning</a></li>
-        <li><a href="#services">Pet Stain Removal</a></li>
-        <li><a href="#services">Carpet Protection</a></li>
-        <li><a href="#services">Area Rug Cleaning</a></li>
+        <li><a href="#services" data-i18n="footSvc1">Residential Cleaning</a></li>
+        <li><a href="#services" data-i18n="footSvc2">Commercial Cleaning</a></li>
+        <li><a href="#services" data-i18n="footSvc3">Upholstery Cleaning</a></li>
+        <li><a href="#services" data-i18n="footSvc4">Pet Stain Removal</a></li>
+        <li><a href="#services" data-i18n="footSvc5">Carpet Protection</a></li>
+        <li><a href="#services" data-i18n="footSvc6">Area Rug Cleaning</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4 data-i18n="footerCompany">Company</h4>
       <ul>
-        <li><a href="#why">About Us</a></li>
-        <li><a href="#process">Our Process</a></li>
-        <li><a href="#testimonials">Reviews</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="#why" data-i18n="footAbout">About Us</a></li>
+        <li><a href="#process" data-i18n="footProcess">Our Process</a></li>
+        <li><a href="#testimonials" data-i18n="footReviews">Reviews</a></li>
+        <li><a href="#contact" data-i18n="footContact">Contact</a></li>
+        <li><a href="#" data-i18n="footBlog">Blog</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Contact</h4>
+      <h4 data-i18n="footerContact">Contact</h4>
       <ul>
         <li><a href="tel:+18258885388">+1-825-888-5388</a></li>
         <li><a href="mailto:tripleactioncarpetcleaning6@gmail.com" style="word-break:break-all;">tripleactioncarpetcleaning6@gmail.com</a></li>
         <li><a href="#">29 St SW, Edmonton AB T6X 3E2</a></li>
-        <li><a href="#contact">Book Online</a></li>
+        <li><a href="#contact" data-i18n="footBook">Book Online</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Triple Action Carpet Cleaning. All rights reserved. | Edmonton, Alberta, Canada 🍁</p>
-    <p><a href="#">Privacy Policy</a> · <a href="#">Terms of Service</a></p>
+    <p><span data-i18n="footerCopy">© 2025 Triple Action Carpet Cleaning. All rights reserved. | Edmonton, Alberta, Canada 🍁</span></p>
+    <p><a href="#" data-i18n="footPrivacy">Privacy Policy</a> · <a href="#" data-i18n="footTerms">Terms of Service</a></p>
   </div>
 </footer>
 
@@ -1125,7 +1164,7 @@
   function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden'; }
   function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
 
-  // Form submit — Email via Formspree & WhatsApp are FULLY SEPARATE
+  // Form submit
   const quoteForm = document.getElementById('quoteForm');
   if (quoteForm) {
     quoteForm.addEventListener('submit', async function(e) {
@@ -1137,7 +1176,6 @@
 
       const formData = new FormData(quoteForm);
 
-      // Build WhatsApp lead message BEFORE fetch (fields still available)
       const firstName = (formData.get('first_name') || '').trim();
       const lastName  = (formData.get('last_name')  || '').trim();
       const phone     = (formData.get('phone')       || '').trim();
@@ -1161,7 +1199,6 @@
       const waLink = 'https://wa.me/18258885388?text=' + waMsg;
 
       try {
-        // 1️⃣ Send email lead via Formspree
         const res = await fetch('https://formspree.io/f/xnjlllko', {
           method: 'POST',
           body: formData,
@@ -1169,11 +1206,9 @@
         });
 
         if (res.ok) {
-          // 2️⃣ Show success screen — WhatsApp button is separate, user clicks it manually
           quoteForm.style.display = 'none';
           const successBox = document.getElementById('formSuccess');
           successBox.style.display = 'block';
-          // Update the WhatsApp follow-up button with the pre-filled lead message
           const waBtn = document.getElementById('waFollowUpBtn');
           if (waBtn) { waBtn.href = waLink; }
         } else {
@@ -1218,6 +1253,336 @@
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
   });
+
+  // ══════════════════════════════════════════════════
+  //  BILINGUAL: English (default) & French
+  // ══════════════════════════════════════════════════
+  const translations = {
+    en: {
+      pageTitle: 'Triple Action Carpet Cleaning | Edmonton, Alberta',
+      navServices: 'Services',
+      navProcess: 'How It Works',
+      navAbout: 'About Us',
+      navReviews: 'Reviews',
+      navContact: 'Contact',
+      navCta: '📞 Free Quote',
+      navCall: '📞 Call Now',
+      heroBadge: '🍁 Proudly Serving Edmonton, Alberta',
+      heroLine1: 'Deep Clean.',
+      heroLine2: 'Triple Action.',
+      heroLine3: 'Guaranteed.',
+      heroSub: "Edmonton's most trusted carpet cleaning company. We use a proven three-step process — pre-treatment, deep extraction, and protective finish — to restore your carpets to like-new condition.",
+      heroBtnQuote: '📋 Get Free Quote',
+      statHomes: 'Homes Cleaned',
+      statSatisfaction: 'Satisfaction Rate',
+      statRating: 'Average Rating',
+      scroll: 'Scroll',
+      trustLicensed: 'Licensed & Insured',
+      trustLicensedSub: 'Fully certified professionals',
+      trustAlberta: 'Alberta-Based',
+      trustAlbertaSub: 'Local Edmonton company',
+      trustSameDay: 'Same-Day Service',
+      trustSameDaySub: 'Available for urgent bookings',
+      trustEco: 'Eco-Friendly Products',
+      trustEcoSub: 'Safe for kids & pets',
+      trustGuarantee: 'Satisfaction Guarantee',
+      trustGuaranteeSub: '100% money-back promise',
+      servLabel: 'What We Do',
+      servTitle: 'Our Cleaning',
+      servTitleAccent: 'Services',
+      servSub: 'Professional-grade cleaning solutions for every surface in your Edmonton home or business.',
+      servBook: 'Book a Service →',
+      svc1Title: 'Residential Carpet Cleaning',
+      svc1Desc: 'Deep steam extraction removes embedded dirt, allergens, and stains from all carpet types. We restore freshness and extend carpet life.',
+      svc1Tag: 'Most Popular',
+      svc2Title: 'Commercial Carpet Cleaning',
+      svc2Desc: 'Minimal disruption, maximum results. We work around your schedule to keep your office or commercial space spotless and professional.',
+      svc2Tag: 'Available 24/7',
+      svc3Title: 'Upholstery & Sofa Cleaning',
+      svc3Desc: 'Revive your sofas, chairs, and furniture. Our upholstery experts safely deep-clean fabric and remove stains without damage.',
+      svc3Tag: 'Gentle Process',
+      svc4Title: 'Pet Stain & Odour Removal',
+      svc4Desc: 'Specialized enzyme-based treatments that neutralize pet odours at the source — not just masking them — and permanently lift stains.',
+      svc4Tag: 'Enzyme-Based',
+      svc5Title: 'Carpet Protection & Scotchgard',
+      svc5Desc: 'Post-clean protective coating that repels spills and reduces soiling, keeping your carpets cleaner for longer between services.',
+      svc5Tag: 'Add-On Service',
+      svc6Title: 'Area Rug & Tile Cleaning',
+      svc6Desc: 'Safe, effective cleaning for all area rug types including Persian, wool, and synthetic. Also includes tile and grout deep cleaning.',
+      svc6Tag: 'All Rug Types',
+      procLabel: 'Our Method',
+      procTitle: 'The Triple Action',
+      procTitleAccent: 'Process',
+      procSub: 'Three precision steps. One exceptional result. This is why our name says it all.',
+      proc1Title: 'Pre-Inspection & Pre-Treatment',
+      proc1Desc: 'We assess your carpets, identify stain types, and apply targeted pre-treatment solutions to loosen embedded soils before cleaning begins.',
+      proc2Title: 'Deep Hot Water Extraction',
+      proc2Desc: 'High-powered truck-mount steam cleaning penetrates deep into carpet fibres, flushing out dirt, bacteria, and allergens completely.',
+      proc3Title: 'Finish & Protective Coating',
+      proc3Desc: 'pH-balanced rinse restores fibre integrity. Optional Scotchgard protective layer is applied, leaving carpets fresh, bright, and protected.',
+      proc4Title: 'Post-Inspection & Your Guarantee',
+      proc4Desc: "We walk through results with you before we leave. Not satisfied? We come back — at no extra charge. That's our Edmonton promise.",
+      whyLabel: 'Why Triple Action',
+      whyTitle: 'Edmonton Chooses',
+      whyTitleAccent: 'Us',
+      whySub: "We're not a franchise. We're your neighbours — a local Edmonton team that takes pride in every job.",
+      why1Title: 'Truck-Mount Steam Technology',
+      why1Desc: 'Our professional-grade truck-mounted units generate higher heat and suction than portable machines — delivering a deeper, faster-drying clean.',
+      why2Title: 'Non-Toxic, Safe Chemicals',
+      why2Desc: 'All cleaning agents are Health Canada approved, biodegradable, and completely safe for children, pets, and allergy sufferers.',
+      why3Title: 'Flexible Scheduling',
+      why3Desc: 'Evenings, weekends, same-day — we work around your life, not the other way around. Serving all of Edmonton and surrounding areas.',
+      why4Title: 'Upfront, Honest Pricing',
+      why4Desc: 'Free in-home estimates. No hidden fees. No surprise charges. You know the exact price before we start — always.',
+      whyFamilies: 'Happy Edmonton Families',
+      testLabel: 'What Clients Say',
+      testTitle: 'Real Edmonton',
+      testTitleAccent: 'Reviews',
+      ctaTitle: 'Ready for Spotless Carpets?',
+      ctaSub: 'Get your free, no-obligation quote today. We serve Edmonton and all surrounding communities in Alberta — same-day service available.',
+      ctaBtnQuote: '📋 Get Free Quote',
+      contactLabel: 'Get In Touch',
+      contactTitle: 'Book Your',
+      contactTitleAccent: 'Clean',
+      contactAddress: 'Address',
+      contactPhone: 'Phone',
+      contactEmail: 'Email',
+      contactWhatsapp: 'WhatsApp',
+      contactHours: 'Hours',
+      contactHoursDetail: 'Monday – Saturday: 8:00 AM – 7:00 PM<br>Sunday: 9:00 AM – 9:00 PM',
+      contactSameDay: 'Same-day service available!',
+      contactArea: 'Service Area',
+      contactAreaDesc: 'Edmonton, Sherwood Park, St. Albert, Spruce Grove, Leduc & surrounding Alberta communities.',
+      formTitle: 'Free Quote Request',
+      formSub: "Fill out the form and we'll get back to you within 2 hours during business hours.",
+      formFirst: 'First Name',
+      formLast: 'Last Name',
+      formPhone: 'Phone Number',
+      formEmailLabel: 'Email Address',
+      formService: 'Service Required',
+      formSize: 'Home Size',
+      formDate: 'Preferred Date',
+      formDetails: 'Additional Details',
+      formSubmit: 'Send My Free Quote Request 🧹',
+      optService: 'Select a service...',
+      optSize: 'Select...',
+      successTitle: 'Quote Request Sent!',
+      successMsg: "✉️ Your request has been emailed to our team. We'll reply within 2 hours during business hours.",
+      successWaHint: 'Want a faster reply? Tap the button below to also send us your details on WhatsApp.',
+      successWaBtn: '💬 Send My Details on WhatsApp',
+      successWaTip: 'This opens WhatsApp with your info pre-filled — just tap Send.',
+      preferWa: 'Prefer WhatsApp?',
+      waDirectMsg: 'Message us directly → +1-825-888-5388',
+      footerDesc: "Edmonton's trusted carpet cleaning specialists. Residential and commercial cleaning with a 100% satisfaction guarantee — because your home deserves the best.",
+      footerServices: 'Services',
+      footerCompany: 'Company',
+      footerContact: 'Contact',
+      footSvc1: 'Residential Cleaning',
+      footSvc2: 'Commercial Cleaning',
+      footSvc3: 'Upholstery Cleaning',
+      footSvc4: 'Pet Stain Removal',
+      footSvc5: 'Carpet Protection',
+      footSvc6: 'Area Rug Cleaning',
+      footAbout: 'About Us',
+      footProcess: 'Our Process',
+      footReviews: 'Reviews',
+      footContact: 'Contact',
+      footBlog: 'Blog',
+      footBook: 'Book Online',
+      footerCopy: '© 2025 Triple Action Carpet Cleaning. All rights reserved. | Edmonton, Alberta, Canada 🍁',
+      footPrivacy: 'Privacy Policy',
+      footTerms: 'Terms of Service',
+    },
+    fr: {
+      pageTitle: 'Triple Action Nettoyage de Tapis | Edmonton, Alberta',
+      navServices: 'Services',
+      navProcess: 'Comment ça marche',
+      navAbout: 'À propos',
+      navReviews: 'Avis',
+      navContact: 'Contact',
+      navCta: '📞 Soumission gratuite',
+      navCall: '📞 Appeler maintenant',
+      heroBadge: '🍁 Fiers de servir Edmonton, Alberta',
+      heroLine1: 'Nettoyage en profondeur.',
+      heroLine2: 'Triple Action.',
+      heroLine3: 'Garanti.',
+      heroSub: "L'entreprise de nettoyage de tapis la plus fiable d'Edmonton. Nous utilisons un procédé éprouvé en trois étapes — prétraitement, extraction profonde et finition protectrice — pour redonner à vos tapis leur état neuf.",
+      heroBtnQuote: '📋 Soumission gratuite',
+      statHomes: 'Maisons nettoyées',
+      statSatisfaction: 'Taux de satisfaction',
+      statRating: 'Note moyenne',
+      scroll: 'Défiler',
+      trustLicensed: 'Certifié et assuré',
+      trustLicensedSub: 'Professionnels pleinement certifiés',
+      trustAlberta: 'Basé en Alberta',
+      trustAlbertaSub: "Entreprise locale d'Edmonton",
+      trustSameDay: 'Service le jour même',
+      trustSameDaySub: 'Disponible pour les réservations urgentes',
+      trustEco: 'Produits écologiques',
+      trustEcoSub: 'Sécuritaires pour les enfants et les animaux',
+      trustGuarantee: 'Satisfaction garantie',
+      trustGuaranteeSub: 'Remboursement complet garanti',
+      servLabel: 'Ce que nous faisons',
+      servTitle: 'Nos services de',
+      servTitleAccent: 'nettoyage',
+      servSub: 'Solutions de nettoyage professionnelles pour toutes les surfaces de votre maison ou entreprise à Edmonton.',
+      servBook: 'Réserver un service →',
+      svc1Title: 'Nettoyage de tapis résidentiel',
+      svc1Desc: "L'extraction à la vapeur élimine la saleté incrustée, les allergènes et les taches de tous types de tapis. Nous redonnons fraîcheur et prolongeons la durée de vie de vos tapis.",
+      svc1Tag: 'Le plus populaire',
+      svc2Title: 'Nettoyage de tapis commercial',
+      svc2Desc: 'Perturbation minimale, résultats maximaux. Nous travaillons selon votre horaire pour maintenir votre bureau ou espace commercial impeccable et professionnel.',
+      svc2Tag: 'Disponible 24h/24',
+      svc3Title: 'Nettoyage de canapés et meubles rembourrés',
+      svc3Desc: 'Redonnez vie à vos canapés, chaises et meubles. Nos experts nettoient en profondeur les tissus et éliminent les taches sans les endommager.',
+      svc3Tag: 'Procédé délicat',
+      svc4Title: "Élimination des taches et odeurs d'animaux",
+      svc4Desc: 'Traitements enzymatiques spécialisés qui neutralisent les odeurs à la source — sans les masquer — et éliminent définitivement les taches.',
+      svc4Tag: "À base d'enzymes",
+      svc5Title: 'Protection de tapis & Scotchgard',
+      svc5Desc: "Revêtement protecteur appliqué après le nettoyage qui repousse les déversements et réduit les salissures, gardant vos tapis plus propres plus longtemps.",
+      svc5Tag: 'Service complémentaire',
+      svc6Title: 'Nettoyage de tapis et carrelage',
+      svc6Desc: 'Nettoyage sécuritaire et efficace pour tous types de tapis, y compris persan, laine et synthétique. Comprend aussi le nettoyage en profondeur du carrelage et des joints.',
+      svc6Tag: 'Tous types de tapis',
+      procLabel: 'Notre méthode',
+      procTitle: 'Le procédé',
+      procTitleAccent: 'Triple Action',
+      procSub: "Trois étapes précises. Un résultat exceptionnel. C'est pourquoi notre nom dit tout.",
+      proc1Title: 'Pré-inspection et prétraitement',
+      proc1Desc: 'Nous évaluons vos tapis, identifions les types de taches et appliquons des solutions de prétraitement ciblées pour déloger les saletés incrustées avant le nettoyage.',
+      proc2Title: "Extraction à l'eau chaude en profondeur",
+      proc2Desc: 'Le nettoyage à la vapeur par camion puissant pénètre profondément dans les fibres du tapis, éliminant complètement la saleté, les bactéries et les allergènes.',
+      proc3Title: 'Finition et revêtement protecteur',
+      proc3Desc: "Un rinçage au pH équilibré restaure l'intégrité des fibres. Une couche protectrice Scotchgard optionnelle est appliquée, laissant les tapis frais, lumineux et protégés.",
+      proc4Title: 'Post-inspection et votre garantie',
+      proc4Desc: "Nous passons en revue les résultats avec vous avant de partir. Pas satisfait? Nous revenons — sans frais supplémentaires. C'est notre promesse à Edmonton.",
+      whyLabel: 'Pourquoi Triple Action',
+      whyTitle: 'Edmonton nous',
+      whyTitleAccent: 'choisit',
+      whySub: "Nous ne sommes pas une franchise. Nous sommes vos voisins — une équipe locale d'Edmonton qui est fière de chaque travail.",
+      why1Title: 'Technologie à vapeur montée sur camion',
+      why1Desc: "Nos unités professionnelles montées sur camion génèrent plus de chaleur et d'aspiration que les appareils portables — pour un nettoyage plus profond et un séchage plus rapide.",
+      why2Title: 'Produits chimiques non toxiques et sécuritaires',
+      why2Desc: 'Tous nos agents nettoyants sont approuvés par Santé Canada, biodégradables et totalement sécuritaires pour les enfants, les animaux et les personnes allergiques.',
+      why3Title: 'Horaire flexible',
+      why3Desc: "Soirées, fins de semaine, service le jour même — nous nous adaptons à votre vie, pas l'inverse. Nous desservons tout Edmonton et les régions environnantes.",
+      why4Title: 'Prix transparents et honnêtes',
+      why4Desc: 'Estimations gratuites à domicile. Aucuns frais cachés. Aucune surprise. Vous connaissez le prix exact avant que nous commencions — toujours.',
+      whyFamilies: 'Familles heureuses à Edmonton',
+      testLabel: 'Ce que disent nos clients',
+      testTitle: 'Vrais avis',
+      testTitleAccent: "d'Edmonton",
+      ctaTitle: 'Prêt pour des tapis impeccables?',
+      ctaSub: "Obtenez votre soumission gratuite et sans engagement aujourd'hui. Nous desservons Edmonton et toutes les communautés environnantes en Alberta — service le jour même disponible.",
+      ctaBtnQuote: '📋 Soumission gratuite',
+      contactLabel: 'Nous joindre',
+      contactTitle: 'Réservez votre',
+      contactTitleAccent: 'nettoyage',
+      contactAddress: 'Adresse',
+      contactPhone: 'Téléphone',
+      contactEmail: 'Courriel',
+      contactWhatsapp: 'WhatsApp',
+      contactHours: "Heures d'ouverture",
+      contactHoursDetail: 'Lundi – Samedi: 8h00 – 19h00<br>Dimanche: 9h00 – 17h00',
+      contactSameDay: 'Service le jour même disponible!',
+      contactArea: 'Zone de service',
+      contactAreaDesc: 'Edmonton, Sherwood Park, St. Albert, Spruce Grove, Leduc et les communautés environnantes en Alberta.',
+      formTitle: 'Demande de soumission gratuite',
+      formSub: "Remplissez le formulaire et nous vous répondrons dans les 2 heures pendant les heures d'ouverture.",
+      formFirst: 'Prénom',
+      formLast: 'Nom de famille',
+      formPhone: 'Numéro de téléphone',
+      formEmailLabel: 'Adresse courriel',
+      formService: 'Service requis',
+      formSize: 'Superficie de la maison',
+      formDate: 'Date préférée',
+      formDetails: 'Détails supplémentaires',
+      formSubmit: 'Envoyer ma demande de soumission 🧹',
+      optService: 'Sélectionner un service...',
+      optSize: 'Sélectionner...',
+      successTitle: 'Demande envoyée!',
+      successMsg: "✉️ Votre demande a été envoyée à notre équipe par courriel. Nous vous répondrons dans les 2 heures pendant les heures d'ouverture.",
+      successWaHint: 'Vous voulez une réponse plus rapide? Appuyez sur le bouton ci-dessous pour nous envoyer vos coordonnées sur WhatsApp.',
+      successWaBtn: '💬 Envoyer mes coordonnées sur WhatsApp',
+      successWaTip: 'Cela ouvre WhatsApp avec vos informations pré-remplies — appuyez simplement sur Envoyer.',
+      preferWa: 'Préférez-vous WhatsApp?',
+      waDirectMsg: 'Écrivez-nous directement → +1-825-888-5388',
+      footerDesc: "Les spécialistes en nettoyage de tapis de confiance d'Edmonton. Nettoyage résidentiel et commercial avec une garantie de satisfaction à 100% — parce que votre maison mérite ce qu'il y a de mieux.",
+      footerServices: 'Services',
+      footerCompany: 'Entreprise',
+      footerContact: 'Contact',
+      footSvc1: 'Nettoyage résidentiel',
+      footSvc2: 'Nettoyage commercial',
+      footSvc3: 'Nettoyage de meubles',
+      footSvc4: 'Élimination des taches',
+      footSvc5: 'Protection de tapis',
+      footSvc6: 'Nettoyage de tapis',
+      footAbout: 'À propos',
+      footProcess: 'Notre procédé',
+      footReviews: 'Avis',
+      footContact: 'Contact',
+      footBlog: 'Blogue',
+      footBook: 'Réserver en ligne',
+      footerCopy: '© 2025 Triple Action Nettoyage de Tapis. Tous droits réservés. | Edmonton, Alberta, Canada 🍁',
+      footPrivacy: 'Politique de confidentialité',
+      footTerms: "Conditions d'utilisation",
+    }
+  };
+
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+    document.getElementById('htmlRoot').setAttribute('lang', lang);
+    document.title = t.pageTitle;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) { el.innerHTML = t[key]; }
+    });
+    const placeholders = {
+      first_name: { en: 'John', fr: 'Jean' },
+      last_name:  { en: 'Smith', fr: 'Dupont' },
+      phone:      { en: '+1 (780) 000-0000', fr: '+1 (780) 000-0000' },
+      email:      { en: 'your@email.com', fr: 'votre@courriel.com' },
+      message:    { en: 'Describe your carpet situation, any specific stains, number of rooms, etc.',
+                    fr: "Décrivez l'état de vos tapis, les taches spécifiques, le nombre de pièces, etc." }
+    };
+    Object.entries(placeholders).forEach(([name, vals]) => {
+      const el = document.querySelector('[name="' + name + '"]');
+      if (el && vals[lang]) el.placeholder = vals[lang];
+    });
+    const serviceOpts = {
+      en: ['Select a service...','Residential Carpet Cleaning','Commercial Carpet Cleaning','Upholstery & Sofa Cleaning','Pet Stain & Odour Removal','Carpet Protection (Scotchgard)','Area Rug Cleaning','Tile & Grout Cleaning','Multiple Services'],
+      fr: ["Sélectionner un service...","Nettoyage de tapis résidentiel","Nettoyage de tapis commercial","Nettoyage de canapés et meubles","Élimination des taches d'animaux","Protection de tapis (Scotchgard)","Nettoyage de tapis","Nettoyage de carrelage et joints","Services multiples"]
+    };
+    const sizeOpts = {
+      en: ['Select...','Under 1,000 sq ft','1,000 – 1,500 sq ft','1,500 – 2,500 sq ft','2,500+ sq ft','Commercial Space'],
+      fr: ['Sélectionner...','Moins de 90 m²','90 – 140 m²','140 – 230 m²','230+ m²','Espace commercial']
+    };
+    const serviceSelect = document.querySelector('[name="service"]');
+    if (serviceSelect) {
+      Array.from(serviceSelect.options).forEach((opt, i) => {
+        if (serviceOpts[lang][i]) opt.text = serviceOpts[lang][i];
+      });
+    }
+    const sizeSelect = document.querySelector('[name="home_size"]');
+    if (sizeSelect) {
+      Array.from(sizeSelect.options).forEach((opt, i) => {
+        if (sizeOpts[lang][i]) opt.text = sizeOpts[lang][i];
+      });
+    }
+    document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+    document.getElementById('btnFR').classList.toggle('active', lang === 'fr');
+    try { localStorage.setItem('tacc_lang', lang); } catch(e) {}
+  }
+
+  (function() {
+    let saved = 'en';
+    try { saved = localStorage.getItem('tacc_lang') || 'en'; } catch(e) {}
+    if (saved === 'fr') setLang('fr');
+  })();
 </script>
 </body>
 </html>
